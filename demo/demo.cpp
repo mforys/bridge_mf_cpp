@@ -39,7 +39,7 @@ int main()
 
     UI *cards = d.get_cards();
 
-    for (i=0; i<CARDS_COUNT; ++i)
+    for (i=0; i<CARD_COUNT; ++i)
     {
         c = new Card(cards[i]);
         cout << "Card["<<i<<"] = "<<cards[i]<<" = ["<<c->suit_s()<<","<<c->rank_s()<<"]"<<endl;
@@ -48,16 +48,41 @@ int main()
 
     cout << endl <<endl;
 
-    for (UI h=0; h<HANDS_COUNT; ++h)
+    for (UI h=0; h<HAND_COUNT; ++h)
     {
         cout << "Hand nr " << h << endl << "--------" << endl;
         Hand *hand = d.get_hand(h);
         Card *c = hand->get_cards();
 
-        for (i=0; i<CARDS_HAND_COUNT; ++i)
+        for (byte s=0; s<SUIT_COUNT; ++s)
         {
-            cout << "Card["<<i<<"] = ["<< (c+i)->suit_s() <<","<<(c+i)->rank_s()<<"]"<<endl;
+        	switch(s)
+        	{
+        		case SPADE:
+        			cout << "S: ";
+        			break;
+        		case HEART:
+					cout << "H: ";
+					break;
+        		case DIAMOND:
+					cout << "D: ";
+					break;
+        		case CLUB:
+					cout << "C: ";
+					break;
+        	}
+
+			for (i=0; i<CARD_HAND_COUNT; ++i)
+			{
+				if ((c+i)->suit() == s)
+					cout << (c+i)->rank_s();
+			}
+
+			cout << endl;
         }
+
+        cout << endl;
     }
+
     return 0;
 }
