@@ -62,6 +62,18 @@ byte Hand::get_points()
 	return points;
 }
 
+byte Hand::get_suit_card_count(Suit s)
+{
+	byte count = 0;
+
+	for (byte i = 0; i < CARDS_HAND_COUNT; ++i)
+	{
+		if (m_Cards[i].suit() == s)
+			count++;
+	}
+
+	return count;
+}
 Hand& Hand::operator=(const Hand& other)
 {
 return *this;

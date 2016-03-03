@@ -15,6 +15,7 @@ public:
   void set(UI *first_card_in_hand);
   Card * get_cards();
   byte get_points();
+  byte get_suit_card_count(Suit s);
   virtual ~Hand();
   virtual Hand& operator=(const Hand& other);
   virtual bool operator==(const Hand& other) const;
