@@ -5,7 +5,15 @@
 #define CARDS_HAND_COUNT 13
 #define HANDS_COUNT       4
 
-typedef unsigned int UI;
+typedef unsigned int    UI;
+typedef unsigned char byte;
+
+enum Seat{
+    SOUTH,
+    WEST,
+    NORTH,
+    EAST
+};
 
 enum Suit{
     CLUB,
