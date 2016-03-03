@@ -14,6 +14,7 @@ public:
   Hand(const Hand& other);
   void set(UI *first_card_in_hand);
   Card * get_cards();
+  byte get_points();
   virtual ~Hand();
   virtual Hand& operator=(const Hand& other);
   virtual bool operator==(const Hand& other) const;

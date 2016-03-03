@@ -36,6 +36,32 @@ Card * Hand::get_cards()
     return m_Cards;
 }
 
+byte Hand::get_points()
+{
+	byte points = 0;
+
+	for (byte i = 0; i < CARDS_HAND_COUNT; ++i)
+	{
+		switch(m_Cards[i].rank())
+		{
+			case ACE:
+				points += 4;
+				break;
+			case KING:
+				points += 3;
+				break;
+			case QUEEN:
+				points += 2;
+				break;
+			case JACK:
+				points += 1;
+				break;
+		}
+	}
+
+	return points;
+}
+
 Hand& Hand::operator=(const Hand& other)
 {
 return *this;
