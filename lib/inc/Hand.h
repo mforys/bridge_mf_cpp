@@ -12,11 +12,12 @@ public:
   Hand();
   Hand(UI *i);
   Hand(const Hand& other);
+  virtual ~Hand();
   void set(UI *first_card_in_hand);
   Card * get_cards();
-  byte get_points();
-  byte get_suit_card_count(Suit s);
-  virtual ~Hand();
+  UI get_points();
+  UI get_suit_card_count(Suit s);
+  char get_seat(byte s);
   virtual Hand& operator=(const Hand& other);
   virtual bool operator==(const Hand& other) const;
 };

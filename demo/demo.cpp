@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-    cout << "BRIDGE MF" << endl <<"---------"<<endl;
+    cout << "BRIDGE MF" << endl <<"---------"<<endl<<endl;
     UI i;
 
 /*    for (i=0; i<CARDS_COUNT; ++i)
@@ -39,19 +39,25 @@ int main()
 
     UI *cards = d.get_cards();
 
-    for (i=0; i<CARD_COUNT; ++i)
-    {
-        c = new Card(cards[i]);
-        cout << "Card["<<i<<"] = "<<cards[i]<<" = ["<<c->suit_s()<<","<<c->rank_s()<<"]"<<endl;
-        delete c;
-    }
+//    for (i=0; i<CARD_COUNT; ++i)
+//    {
+//        c = new Card(cards[i]);
+//        cout << "Card["<<i<<"] = "<<cards[i]<<" = ["<<c->suit_s()<<","<<c->rank_s()<<"]"<<endl;
+//        delete c;
+//    }
+//
+//    cout << endl <<endl;
 
-    cout << endl <<endl;
-
-    for (UI h=0; h<HAND_COUNT; ++h)
+    for (byte h=0; h<HAND_COUNT; ++h)
     {
-        cout << "Hand nr " << h << endl << "--------" << endl;
+
         Hand *hand = d.get_hand(h);
+
+        cout << "Hand " << hand->get_seat(h) << ", Points = " << hand->get_points();
+        cout << ", Suits = [" << hand->get_suit_card_count(CLUB)<<","<< hand->get_suit_card_count(DIAMOND)<<",";
+        cout << hand->get_suit_card_count(HEART) << "," << hand->get_suit_card_count(SPADE) <<"]";
+        cout << endl << "--------" << endl;
+
         Card *c = hand->get_cards();
 
         for (byte s=0; s<SUIT_COUNT; ++s)

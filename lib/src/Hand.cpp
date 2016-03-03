@@ -36,9 +36,9 @@ Card * Hand::get_cards()
     return m_Cards;
 }
 
-byte Hand::get_points()
+UI Hand::get_points()
 {
-	byte points = 0;
+	UI points = 0;
 
 	for (byte i = 0; i < CARD_HAND_COUNT; ++i)
 	{
@@ -62,9 +62,9 @@ byte Hand::get_points()
 	return points;
 }
 
-byte Hand::get_suit_card_count(Suit s)
+UI Hand::get_suit_card_count(Suit s)
 {
-	byte count = 0;
+	UI count = 0;
 
 	for (byte i = 0; i < CARD_HAND_COUNT; ++i)
 	{
@@ -74,6 +74,22 @@ byte Hand::get_suit_card_count(Suit s)
 
 	return count;
 }
+
+char Hand::get_seat(byte s)
+{
+	switch (s)
+	{
+		case WEST:
+			return 'W';
+		case NORTH:
+			return 'N';
+		case EAST:
+			return 'E';
+		default:
+			return 'S';
+	}
+}
+
 Hand& Hand::operator=(const Hand& other)
 {
 	return *this;
