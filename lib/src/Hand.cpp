@@ -12,7 +12,7 @@ Hand::Hand(const Hand& other)
 
 Hand::Hand(UI *first_card_in_hand)
 {
-    for (UI j = 0; j < CARDS_HAND_COUNT; ++j)
+    for (UI j = 0; j < CARD_HAND_COUNT; ++j)
     {
       m_Cards[j].set(*(first_card_in_hand + j));
     }
@@ -25,7 +25,7 @@ Hand::~Hand()
 
 void Hand::set(UI *first_card_in_hand)
 {
-    for (UI j = 0; j < CARDS_HAND_COUNT; ++j)
+    for (UI j = 0; j < CARD_HAND_COUNT; ++j)
     {
       m_Cards[j].set(*(first_card_in_hand + j));
     }
@@ -40,7 +40,7 @@ byte Hand::get_points()
 {
 	byte points = 0;
 
-	for (byte i = 0; i < CARDS_HAND_COUNT; ++i)
+	for (byte i = 0; i < CARD_HAND_COUNT; ++i)
 	{
 		switch(m_Cards[i].rank())
 		{
@@ -66,7 +66,7 @@ byte Hand::get_suit_card_count(Suit s)
 {
 	byte count = 0;
 
-	for (byte i = 0; i < CARDS_HAND_COUNT; ++i)
+	for (byte i = 0; i < CARD_HAND_COUNT; ++i)
 	{
 		if (m_Cards[i].suit() == s)
 			count++;
@@ -76,11 +76,11 @@ byte Hand::get_suit_card_count(Suit s)
 }
 Hand& Hand::operator=(const Hand& other)
 {
-return *this;
+	return *this;
 }
 
 bool Hand::operator==(const Hand& other) const
 {
-///TODO: return ...;
+	return true;
 }
 

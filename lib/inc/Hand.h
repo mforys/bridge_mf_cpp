@@ -6,7 +6,7 @@
 
 class Hand
 {
-  Card m_Cards[CARDS_HAND_COUNT];
+  Card m_Cards[CARD_HAND_COUNT];
 
 public:
   Hand();

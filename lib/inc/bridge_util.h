@@ -1,9 +1,10 @@
 #ifndef BRIDGE_UTIL_H_INCLUDED
 #define BRIDGE_UTIL_H_INCLUDED
 
-#define CARDS_COUNT      52
-#define CARDS_HAND_COUNT 13
-#define HANDS_COUNT       4
+#define CARD_COUNT      52
+#define CARD_HAND_COUNT 13
+#define HAND_COUNT       4
+#define SUIT_COUNT       4
 
 typedef unsigned int    UI;
 typedef unsigned char byte;

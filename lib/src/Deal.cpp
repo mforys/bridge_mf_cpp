@@ -17,18 +17,18 @@ Deal::Deal()
 
     UI j;
 
-    for (UI i = 0; i < CARDS_COUNT; ++i)
+    for (UI i = 0; i < CARD_COUNT; ++i)
         m_Cards[i] = i;
 
-    for (UI i = CARDS_COUNT-1; i > 0; --i)
+    for (UI i = CARD_COUNT-1; i > 0; --i)
     {
         j = get_random(i);
         swap(i,j);
     }
 
     // generate Hands
-    for (UI h = 0; h < HANDS_COUNT; ++h)
-        m_Hands[h].set(m_Cards + h*CARDS_HAND_COUNT);
+    for (UI h = 0; h < HAND_COUNT; ++h)
+        m_Hands[h].set(m_Cards + h*CARD_HAND_COUNT);
 }
 
 Deal::~Deal()

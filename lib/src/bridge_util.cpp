@@ -5,7 +5,7 @@
 UI get_random_card()
 {
     srand(time(NULL));
-    UI r = rand() % CARDS_COUNT;
+    UI r = rand() % CARD_COUNT;
     return r;
 }
 

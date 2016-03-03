@@ -8,15 +8,15 @@ Card::Card()
     //ctor
     UI i = get_random_card();
 
-    r = (Rank) (i % CARDS_HAND_COUNT);
-    s = (Suit) (i / CARDS_HAND_COUNT);
+    r = (Rank) (i % CARD_HAND_COUNT);
+    s = (Suit) (i / CARD_HAND_COUNT);
 }
 
 Card::Card(UI i)
 {
     //ctor
-    r = (Rank) (i % CARDS_HAND_COUNT);
-    s = (Suit) (i / CARDS_HAND_COUNT);
+    r = (Rank) (i % CARD_HAND_COUNT);
+    s = (Suit) (i / CARD_HAND_COUNT);
 }
 
 Card::Card(Suit s, Rank r)
@@ -39,8 +39,8 @@ Card::Card(const Card& other)
 void Card::set(UI i)
 {
     //ctor
-    r = (Rank) (i % CARDS_HAND_COUNT);
-    s = (Suit) (i / CARDS_HAND_COUNT);
+    r = (Rank) (i % CARD_HAND_COUNT);
+    s = (Suit) (i / CARD_HAND_COUNT);
 }
 
 Suit Card::suit()
