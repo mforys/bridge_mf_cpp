@@ -5,5 +5,5 @@ add_executable (Bridge_MF_Demo demo.cpp)
 # Link the executable to the Hello library. Since the Hello library has
 # public include directories we will use those link directories when building
 # helloDemo
-target_link_libraries (Bridge_MF_Demo LINK_PUBLIC bridge_mf)
+target_link_libraries (Bridge_MF_Demo bridge_mf)
 
