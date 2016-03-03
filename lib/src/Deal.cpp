@@ -25,6 +25,10 @@ Deal::Deal()
         j = get_random(i);
         swap(i,j);
     }
+
+    // generate Hands
+    for (UI h = 0; h < HANDS_COUNT; ++h)
+        m_Hands[h].set(m_Cards + h*CARDS_HAND_COUNT);
 }
 
 Deal::~Deal()
@@ -35,4 +39,9 @@ Deal::~Deal()
 UI * Deal::get_cards()
 {
     return m_Cards;
+}
+
+Hand * Deal::get_hand(UI i)
+{
+    return &m_Hands[i];
 }

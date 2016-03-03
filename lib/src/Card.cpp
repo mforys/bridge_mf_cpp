@@ -36,6 +36,13 @@ Card::Card(const Card& other)
     //copy ctor
 }
 
+void Card::set(UI i)
+{
+    //ctor
+    r = (Rank) (i % CARDS_HAND_COUNT);
+    s = (Suit) (i / CARDS_HAND_COUNT);
+}
+
 Suit Card::suit()
 {
     return s;

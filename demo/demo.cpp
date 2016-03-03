@@ -2,6 +2,7 @@
 #include <cstdlib>
 
 #include "Card.h"
+#include "Hand.h"
 #include "Deal.h"
 #include "bridge_util.h"
 
@@ -45,5 +46,18 @@ int main()
         delete c;
     }
 
+    cout << endl <<endl;
+
+    for (UI h=0; h<HANDS_COUNT; ++h)
+    {
+        cout << "Hand nr " << h << endl << "--------" << endl;
+        Hand *hand = d.get_hand(h);
+        Card *c = hand->get_cards();
+
+        for (i=0; i<CARDS_HAND_COUNT; ++i)
+        {
+            cout << "Card["<<i<<"] = ["<< (c+i)->suit_s() <<","<<(c+i)->rank_s()<<"]"<<endl;
+        }
+    }
     return 0;
 }

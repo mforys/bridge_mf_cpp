@@ -13,6 +13,7 @@ class Card
         Card(UI i);
         Card(Suit s, Rank r);
         virtual ~Card();
+	void set(UI i);
         Suit suit();
         Rank rank();
         const char suit_s();
