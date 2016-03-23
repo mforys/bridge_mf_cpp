@@ -7,6 +7,7 @@ class Card
 {
    Suit s;
    Rank r;
+   byte v;
 
     public:
         Card();
@@ -14,6 +15,7 @@ class Card
         Card(Suit s, Rank r);
         virtual ~Card();
 	void set(UI i);
+		byte value();
         Suit suit();
         Rank rank();
         const char suit_s();

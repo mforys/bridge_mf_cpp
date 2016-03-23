@@ -7,6 +7,9 @@
 class Hand
 {
   Card m_Cards[CARD_HAND_COUNT];
+  void swap(byte i, byte j);
+  byte divide(byte i, byte j);
+  void quick_sort(byte i, byte j);
 
 public:
   Hand();
