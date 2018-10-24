@@ -14,7 +14,8 @@ class Card
         Card(UI i);
         Card(Suit s, Rank r);
         virtual ~Card();
-	void set(UI i);
+	    
+        void set(UI i);
 		byte value();
         Suit suit();
         Rank rank();

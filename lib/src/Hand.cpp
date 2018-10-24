@@ -65,7 +65,6 @@ byte Hand::divide(byte i, byte j)
     }
 
     swap(j, current_pos);
-    cout << "Division index = " << (UI) current_pos << endl;
 
     return current_pos;
 }
@@ -106,6 +105,8 @@ UI Hand::get_points()
             break;
         case JACK:
             points += 1;
+            break;
+        default:
             break;
         }
     }

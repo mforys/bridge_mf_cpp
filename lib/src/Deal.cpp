@@ -13,7 +13,7 @@ void Deal::swap(UI i, UI j)
 
 Deal::Deal()
 {
-    cout << "Konstruktor dla Deal" << endl;
+    //cout << "Konstruktor dla Deal" << endl;
 
     UI j;
 
