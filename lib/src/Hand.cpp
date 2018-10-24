@@ -6,27 +6,13 @@
 using namespace std;
 
 Hand::Hand()
-{
-
-}
+{}
 
 Hand::Hand(const Hand& other)
-{
-
-}
-
-Hand::Hand(UI *first_card_in_hand)
-{
-    for (UI j = 0; j < CARD_HAND_COUNT; ++j)
-    {
-        m_Cards[j].set(*(first_card_in_hand + j));
-    }
-}
+{}
 
 Hand::~Hand()
-{
-
-}
+{}
 
 void Hand::set(UI *first_card_in_hand)
 {
@@ -86,13 +72,13 @@ Card * Hand::get_cards()
     return m_Cards;
 }
 
-UI Hand::get_points()
+UI Hand::get_points() const
 {
     UI points = 0;
 
-    for (byte i = 0; i < CARD_HAND_COUNT; ++i)
+    for (const auto & card : m_Cards)
     {
-        switch (m_Cards[i].rank())
+        switch (card.rank())
         {
         case ACE:
             points += 4;
@@ -118,9 +104,9 @@ UI Hand::get_suit_card_count(Suit s)
 {
     UI count = 0;
 
-    for (byte i = 0; i < CARD_HAND_COUNT; ++i)
+    for (const auto & card : m_Cards)
     {
-        if (m_Cards[i].suit() == s)
+        if (card.suit() == s)
             count++;
     }
 
@@ -149,6 +135,9 @@ Hand& Hand::operator=(const Hand& other)
 
 bool Hand::operator==(const Hand& other) const
 {
-    return true;
+    if (this == &other)
+        return true;
+    else
+        return false;
 }
 

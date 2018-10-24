@@ -18,7 +18,7 @@ public:
   virtual ~Hand();
   void set(UI *first_card_in_hand);
   Card * get_cards();
-  UI get_points();
+  UI get_points() const;
   UI get_suit_card_count(Suit s);
   char get_seat(byte s);
   virtual Hand& operator=(const Hand& other);

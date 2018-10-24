@@ -55,17 +55,17 @@ void Card::set(UI i)
     s = (Suit) (i / CARD_HAND_COUNT);
 }
 
-byte Card::value()
+byte Card::value() const
 {
     return v;
 }
 
-Suit Card::suit()
+Suit Card::suit() const
 {
     return s;
 }
 
-Rank Card::rank()
+Rank Card::rank() const
 {
     return r;
 }

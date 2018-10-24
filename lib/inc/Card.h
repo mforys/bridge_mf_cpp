@@ -16,9 +16,9 @@ class Card
         virtual ~Card();
 	    
         void set(UI i);
-		byte value();
-        Suit suit();
-        Rank rank();
+		byte value() const;
+        Suit suit() const;
+        Rank rank() const;
         const char suit_s();
         const char rank_s();
         Card(const Card& other);
