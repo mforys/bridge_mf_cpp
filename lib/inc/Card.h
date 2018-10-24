@@ -23,6 +23,8 @@ class Card
         const char rank_s();
         Card(const Card& other);
         Card& operator=(const Card& other);
+        bool operator==(const Card& rhs) const;
+        bool operator!=(const Card& rhs) const;
     protected:
     private:
 };

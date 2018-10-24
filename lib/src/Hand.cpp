@@ -137,7 +137,16 @@ bool Hand::operator==(const Hand& other) const
 {
     if (this == &other)
         return true;
-    else
-        return false;
+    
+    UI i = 0;
+    for (const auto & card : m_Cards)
+    {
+        if (card != other.m_Cards[i])
+            return false;
+
+        ++i;
+    }
+
+    return true;
 }
 

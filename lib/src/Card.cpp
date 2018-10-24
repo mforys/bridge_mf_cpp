@@ -116,3 +116,19 @@ Card& Card::operator=(const Card& rhs)
 
     return *this;
 }
+
+bool Card::operator==(const Card& rhs) const
+{
+    if (this == &rhs)
+        return true;
+
+    if (v == rhs.v)
+        return true;
+    else
+        return false;
+}
+
+bool Card::operator!=(const Card& rhs) const
+{
+    return !(*this == rhs);
+}
