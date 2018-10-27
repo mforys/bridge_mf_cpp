@@ -144,6 +144,7 @@ Hand& Hand::operator=(const Hand& other)
     }
 
     // by convention, always return *this
+
     return *this;
 }
 
