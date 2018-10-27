@@ -2,14 +2,12 @@
 #include <cstdlib>
 #include <iostream>
 
-using namespace std;
-
 #define ASCII_2_CODE 50
 
 Card::Card()
 {
     //ctor
-    UI i = get_random_card();
+    UI i = getRandomCard();
 
     v = i;
     r = (Rank) (i % CARD_HAND_COUNT);

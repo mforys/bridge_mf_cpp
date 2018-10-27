@@ -2,14 +2,14 @@
 #include <cstdlib>
 #include <ctime>
 
-UI get_random_card()
+UI getRandomCard()
 {
     srand(time(NULL));
     UI r = rand() % CARD_COUNT;
     return r;
 }
 
-UI get_random(UI i)
+UI getRandom(UI i)
 {
     srand(time(NULL));
     UI r = rand() % i;
