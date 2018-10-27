@@ -14,21 +14,18 @@ int main()
     UI i;
 
     Deal d;
-    Card *c = NULL;
-
-    UI *cards = d.get_cards();
 
     for (byte h=0; h<HAND_COUNT; ++h)
     {
 
-        Hand *hand = d.get_hand(h);
+        Hand *hand = d.getHand(h);
 
-        cout << "Hand " << hand->get_seat(h) << ", Points = " << hand->get_points();
-        cout << ", Suits = [" << hand->get_suit_card_count(CLUB)<<","<< hand->get_suit_card_count(DIAMOND)<<",";
-        cout << hand->get_suit_card_count(HEART) << "," << hand->get_suit_card_count(SPADE) <<"]";
+        cout << "Hand " << hand->getSeat(h) << ", Points = " << hand->getPoints();
+        cout << ", Suits = [" << hand->getSuitCount(CLUB)<<","<< hand->getSuitCount(DIAMOND)<<",";
+        cout << hand->getSuitCount(HEART) << "," << hand->getSuitCount(SPADE) <<"]";
         cout << endl << "--------" << endl;
 
-        Card *c = hand->get_cards();
+        Card *c = hand->getCards();
 
         for (byte s=0; s<SUIT_COUNT; ++s)
         {

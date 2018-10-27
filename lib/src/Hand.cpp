@@ -1,15 +1,20 @@
 #include "Hand.h"
+
 #include <algorithm>
 #include <functional>
 #include <iostream>
 
-using namespace std;
-
 Hand::Hand()
-{}
+{
+}
 
 Hand::Hand(const Hand& other)
-{}
+{
+    for (int i = 0; i < CARD_HAND_COUNT; ++i)
+    {
+        cards[i] = other.cards[i];
+    }
+}
 
 Hand::~Hand()
 {}
@@ -18,24 +23,24 @@ void Hand::set(UI *first_card_in_hand)
 {
     for (UI j = 0; j < CARD_HAND_COUNT; ++j)
     {
-        m_Cards[j].set(*(first_card_in_hand + j));
+        cards[j].set(*(first_card_in_hand + j));
     }
 
-    quick_sort(0, CARD_HAND_COUNT - 1);
+    quickSort(0, CARD_HAND_COUNT - 1);
 }
 
 void Hand::swap(byte i, byte j)
 {
-    Card temp = m_Cards[i];
+    Card temp = cards[i];
 
-    m_Cards[i] = m_Cards[j];
-    m_Cards[j] = temp;
+    cards[i] = cards[j];
+    cards[j] = temp;
 }
 
 byte Hand::divide(byte i, byte j)
 {
     byte div_index = (i + j) / 2;
-    Card div = m_Cards[div_index];
+    Card div = cards[div_index];
 
     swap(div_index, j);
 
@@ -43,7 +48,7 @@ byte Hand::divide(byte i, byte j)
 
     for (byte k = i; k < j; ++k)
     {
-        if (m_Cards[k].value() > div.value())
+        if (cards[k].value() > div.value())
         {
             swap(k, current_pos);
             current_pos++;
@@ -55,28 +60,28 @@ byte Hand::divide(byte i, byte j)
     return current_pos;
 }
 
-void Hand::quick_sort(byte i, byte j)
+void Hand::quickSort(byte i, byte j)
 {
     if (i < j)
     {
-        byte k = this->divide(i, j);
+        byte k = divide(i, j);
         if (k > i)
-            this->quick_sort(i, k - 1);
+            quickSort(i, k - 1);
         if (k < j - 1)
-            this->quick_sort(k + 1, j);
+            quickSort(k + 1, j);
     }
 }
 
-Card * Hand::get_cards()
+Card * Hand::getCards()
 {
-    return m_Cards;
+    return cards;
 }
 
-UI Hand::get_points() const
+UI Hand::getPoints() const
 {
     UI points = 0;
 
-    for (const auto & card : m_Cards)
+    for (const auto & card : cards)
     {
         switch (card.rank())
         {
@@ -100,11 +105,11 @@ UI Hand::get_points() const
     return points;
 }
 
-UI Hand::get_suit_card_count(Suit s)
+UI Hand::getSuitCount(Suit s)
 {
     UI count = 0;
 
-    for (const auto & card : m_Cards)
+    for (const auto & card : cards)
     {
         if (card.suit() == s)
             count++;
@@ -113,7 +118,7 @@ UI Hand::get_suit_card_count(Suit s)
     return count;
 }
 
-char Hand::get_seat(byte s)
+char Hand::getSeat(byte s)
 {
     switch (s)
     {
@@ -130,6 +135,7 @@ char Hand::get_seat(byte s)
 
 Hand& Hand::operator=(const Hand& other)
 {
+    *this = other;
     return *this;
 }
 
@@ -139,9 +145,9 @@ bool Hand::operator==(const Hand& other) const
         return true;
     
     UI i = 0;
-    for (const auto & card : m_Cards)
+    for (const auto & card : cards)
     {
-        if (card != other.m_Cards[i])
+        if (card != other.cards[i])
             return false;
 
         ++i;
@@ -149,4 +155,3 @@ bool Hand::operator==(const Hand& other) const
 
     return true;
 }
-

@@ -39,7 +39,7 @@ enum Rank{
     ACE
 };
 
-UI get_random_card();
-UI get_random(UI i);
+UI getRandomCard();
+UI getRandom(UI i);
 
 #endif // BRIDGE_UTIL_H_INCLUDED

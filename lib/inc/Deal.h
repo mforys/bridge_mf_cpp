@@ -12,8 +12,8 @@ class Deal
     public:
         Deal();
         virtual ~Deal();
-        UI * get_cards();
-        Hand * get_hand(UI i);
+        UI * getCards();
+        Hand * getHand(UI i);
 
     protected:
     private:

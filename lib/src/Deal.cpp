@@ -1,4 +1,5 @@
 #include "Deal.h"
+
 #include <cstdlib>
 #include <iostream>
 
@@ -22,7 +23,7 @@ Deal::Deal()
 
     for (UI i = CARD_COUNT-1; i > 0; --i)
     {
-        j = get_random(i);
+        j = getRandom(i);
         swap(i,j);
     }
 
@@ -36,12 +37,12 @@ Deal::~Deal()
     //dtor
 }
 
-UI * Deal::get_cards()
+UI * Deal::getCards()
 {
     return m_Cards;
 }
 
-Hand * Deal::get_hand(UI i)
+Hand * Deal::getHand(UI i)
 {
     return &m_Hands[i];
 }
