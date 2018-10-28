@@ -1,6 +1,8 @@
 #ifndef BRIDGE_UTIL_H_INCLUDED
 #define BRIDGE_UTIL_H_INCLUDED
 
+#include <string>
+
 #define CARD_COUNT      52
 #define CARD_HAND_COUNT 13
 #define HAND_COUNT       4
@@ -66,5 +68,6 @@ enum BidVolume
 
 UI getRandomCard();
 UI getRandom(UI i);
+std::string suit_s(enum Suit suit);
 
 #endif // BRIDGE_UTIL_H_INCLUDED

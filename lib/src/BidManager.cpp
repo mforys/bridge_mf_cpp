@@ -7,6 +7,9 @@
 
 #include "BidManager.h"
 
+//#include <iostream>
+#include <string>
+
 void BidManager::addBid(Bid bid)
 {
     bids.push_back(bid);
@@ -73,4 +76,32 @@ Bid* BidManager::getPreviousRegularBid()
     };
 
     return nullptr;
+}
+
+std::string BidManager::getAllBids_s()
+{
+    std::string output;
+
+    for (const auto& bid : bids)
+    {
+        switch (bid.volume)
+        {
+            case RECONTRA:
+                output.append("RECONTRA");
+                break;
+            case CONTRA:
+                output.append("CONTRA");
+                break;
+            case PASS:
+                output.append("PASS");
+                break;
+            default:
+                output.append(std::to_string(bid.volume));
+                output.append(" " + suit_s(bid.suit));
+        }
+
+        output.append(" \n");
+    }
+
+    return output;
 }

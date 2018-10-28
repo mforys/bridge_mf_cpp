@@ -11,6 +11,7 @@ using namespace std;
 
 void printHand(Card *c);
 
+
 int main()
 {
     cout << "BRIDGE MF" << endl <<"---------"<<endl<<endl;
@@ -31,15 +32,23 @@ int main()
         printHand(c);
         cout << endl;
 
-        BidManager bidManager;
 
-        bidManager.pass();
-        bidManager.addBid(ONE_B, CLUB);
-        bidManager.addBid(ONE_B, SPADE);
-        bidManager.contra();
-        bidManager.recontra();
     }
 
+    BidManager bidManager;
+
+    bidManager.pass();
+    bidManager.addBid(ONE_B, CLUB);
+    bidManager.addBid(ONE_B, SPADE);
+    bidManager.contra();
+    bidManager.recontra();
+    bidManager.addBid(TWO_B, DIAMOND);
+    bidManager.addBid(TWO_B, HEART);
+    bidManager.pass();
+    bidManager.pass();
+    bidManager.addBid(FOUR_B, HEART);
+
+    cout << bidManager.getAllBids_s() << endl;
     return 0;
 }
 

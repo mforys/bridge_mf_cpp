@@ -25,6 +25,7 @@ public:
     Error recontra();
     Bid getBid(byte id);
     Bid getLastBid();
+    std::string getAllBids_s();
 
 private:
     Bid* getPreviousRegularBid();
