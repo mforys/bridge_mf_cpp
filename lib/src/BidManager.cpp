@@ -15,7 +15,7 @@ void BidManager::addBid(Bid bid)
     bids.push_back(bid);
 }
 
-Error BidManager::addBid(BidVolume volume, Suit suit)
+Error BidManager::bid(BidVolume volume, Suit suit)
 {
     Bid bid = Bid(volume, suit);
     Bid* previousNonPassBid = getPreviousRegularBid();

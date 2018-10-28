@@ -24,8 +24,8 @@ int main()
         Hand *hand = d.getHand(h);
 
         cout << "Hand " << hand->getSeat(h) << ", Points = " << hand->getPoints();
-        cout << ", Suits = [" << hand->getSuitCount(CLUB)<<","<< hand->getSuitCount(DIAMOND)<<",";
-        cout << hand->getSuitCount(HEART) << "," << hand->getSuitCount(SPADE) <<"]";
+        cout << ", Suits = [" << hand->getSuitCount(SPADE)<<","<< hand->getSuitCount(HEART)<<",";
+        cout << hand->getSuitCount(DIAMOND) << "," << hand->getSuitCount(CLUB) <<"]";
         cout << endl << "--------" << endl;
 
         cout << hand->print();
@@ -35,15 +35,15 @@ int main()
     BidManager bidManager;
 
     bidManager.pass();
-    bidManager.addBid(ONE_B, CLUB);
-    bidManager.addBid(ONE_B, SPADE);
+    bidManager.bid(ONE_B, CLUB);
+    bidManager.bid(ONE_B, SPADE);
     bidManager.contra();
     bidManager.recontra();
-    bidManager.addBid(TWO_B, DIAMOND);
-    bidManager.addBid(TWO_B, HEART);
+    bidManager.bid(TWO_B, DIAMOND);
+    bidManager.bid(TWO_B, HEART);
     bidManager.pass();
     bidManager.pass();
-    bidManager.addBid(FOUR_B, HEART);
+    bidManager.bid(FOUR_B, HEART);
 
     cout << bidManager.getAllBids_s() << endl;
     return 0;

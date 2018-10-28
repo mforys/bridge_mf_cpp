@@ -19,7 +19,7 @@ class BidManager
 
 public:
     void addBid(Bid bid);
-    Error addBid(BidVolume volume, Suit suit);
+    Error bid(BidVolume volume, Suit suit);
     void pass();
     Error contra();
     Error recontra();

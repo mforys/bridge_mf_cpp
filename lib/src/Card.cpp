@@ -1,4 +1,5 @@
 #include "Card.h"
+
 #include <cstdlib>
 #include <iostream>
 
@@ -22,12 +23,12 @@ Card::Card(UI i)
     s = (Suit) (i / CARD_HAND_COUNT);
 }
 
-Card::Card(Suit s, Rank r)
+Card::Card(Suit suit, Rank rank)
 {
     //ctor
-    this->v = s * CARD_HAND_COUNT + r;
-    this->s = s;
-    this->r = r;
+    v = suit * CARD_HAND_COUNT + rank;
+    s = suit;
+    r = rank;
 }
 
 Card::~Card()
@@ -40,9 +41,9 @@ Card::Card(const Card& other)
     //copy ctor
     //cout <<" Konstruktor kopiujacy" <<endl;
 
-    this->v = other.v;
-    this->r = other.r;
-    this->s = other.s;
+    v = other.v;
+    r = other.r;
+    s = other.s;
 }
 
 void Card::set(UI i)
@@ -86,8 +87,6 @@ const char Card::suit_s()
 
 std::string Card::rank_s()
 {
-    //std:string s;
-
     switch (r)
     {
     case ACE:
@@ -110,9 +109,9 @@ Card& Card::operator=(const Card& rhs)
     if (this == &rhs)
         return *this; // handle self assignment
 
-    this->v = rhs.v;
-    this->r = rhs.r;
-    this->s = rhs.s;
+    v = rhs.v;
+    r = rhs.r;
+    s = rhs.s;
 
     return *this;
 }
