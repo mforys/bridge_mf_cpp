@@ -9,21 +9,24 @@
 typedef unsigned int    UI;
 typedef unsigned char byte;
 
-enum Seat{
+enum Seat
+{
     SOUTH,
     WEST,
     NORTH,
     EAST
 };
 
-enum Suit{
+enum Suit
+{
     CLUB,
     DIAMOND,
     HEART,
     SPADE
 };
 
-enum Rank{
+enum Rank
+{
     TWO,
     THREE,
     FOUR,
@@ -37,6 +40,28 @@ enum Rank{
     QUEEN,
     KING,
     ACE
+};
+
+enum Error
+{
+    SUCCESS,
+    FAIL,
+    CANT_ADD_BID,
+    WRONG_BID
+};
+
+enum BidVolume
+{
+    CONTRA = -2,
+    RECONTRA = -1,
+    PASS = 0,
+    ONE_B,
+    TWO_B,
+    THREE_B,
+    FOUR_B,
+    FIVE_B,
+    SIX_B,
+    SEVEN_B
 };
 
 UI getRandomCard();

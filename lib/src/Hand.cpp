@@ -85,20 +85,20 @@ UI Hand::getPoints() const
     {
         switch (card.rank())
         {
-        case ACE:
-            points += 4;
-            break;
-        case KING:
-            points += 3;
-            break;
-        case QUEEN:
-            points += 2;
-            break;
-        case JACK:
-            points += 1;
-            break;
-        default:
-            break;
+            case ACE:
+                points += 4;
+                break;
+            case KING:
+                points += 3;
+                break;
+            case QUEEN:
+                points += 2;
+                break;
+            case JACK:
+                points += 1;
+                break;
+            default:
+                break;
         }
     }
 
@@ -122,14 +122,14 @@ char Hand::getSeat(byte s)
 {
     switch (s)
     {
-    case WEST:
-        return 'W';
-    case NORTH:
-        return 'N';
-    case EAST:
-        return 'E';
-    default:
-        return 'S';
+        case WEST:
+            return 'W';
+        case NORTH:
+            return 'N';
+        case EAST:
+            return 'E';
+        default:
+            return 'S';
     }
 }
 
@@ -137,14 +137,13 @@ Hand& Hand::operator=(const Hand& other)
 {
     if (this != &other) // protect against invalid self-assignment
     {
-        for (int i = 0; i < CARD_HAND_COUNT; ++i)
+        for (byte i = 0; i < CARD_HAND_COUNT; ++i)
         {
             cards[i] = other.cards[i];
         }
     }
 
     // by convention, always return *this
-
     return *this;
 }
 
@@ -152,14 +151,11 @@ bool Hand::operator==(const Hand& other) const
 {
     if (this == &other)
         return true;
-    
-    UI i = 0;
-    for (const auto & card : cards)
-    {
-        if (card != other.cards[i])
-            return false;
 
-        ++i;
+    for (byte i = 0; i < CARD_HAND_COUNT; ++i)
+    {
+        if (cards[i] != other.cards[i])
+            return false;
     }
 
     return true;

@@ -14,17 +14,14 @@
 
 class Bid
 {
-    byte volume;
-    Suit suit;
-    bool pass;
-    bool contra;
-    bool recontra;
+    public:
+        BidVolume volume;
+        Suit suit;
 
-public:
-    Bid(byte volume, Suit suit, bool pass = false, bool contra = false, bool recontra = false);
+        Bid(BidVolume volume, Suit suit);
 
-private:
-    //Bid() noexcept;
+    private:
+        Bid();
 };
 
 #endif /* Bid_h */

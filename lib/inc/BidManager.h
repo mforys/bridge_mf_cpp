@@ -19,12 +19,15 @@ class BidManager
 
 public:
     void addBid(Bid bid);
-    Error addBid(byte volume, Suit suit);
-    void addBid_Pass();
-    Error addBid_Contra();
-    Error addBid_Recontra();
+    Error addBid(BidVolume volume, Suit suit);
+    void pass();
+    Error contra();
+    Error recontra();
     Bid getBid(byte id);
     Bid getLastBid();
+
+private:
+    Bid* getPreviousRegularBid();
 };
 
 #endif /* BidManager_h */

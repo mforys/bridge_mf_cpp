@@ -1,5 +1,12 @@
 set (CMAKE_CXX_STANDARD 11)
 
-add_library (bridge_mf SHARED src/bridge_util.cpp src/Card.cpp src/Deal.cpp src/Hand.cpp)
+file(GLOB SOURCES
+    "inc/*.h"
+    "src/*.cpp"
+)
+
+message ( ${SOURCES} )
+
+add_library (bridge_mf SHARED ${SOURCES})
 
 target_include_directories (bridge_mf PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc)

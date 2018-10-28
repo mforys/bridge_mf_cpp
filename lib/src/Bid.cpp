@@ -7,11 +7,11 @@
 
 #include "Bid.h"
 
-Bid::Bid() noexcept
+Bid::Bid()
 {}
 
-Bid::Bid(byte volume, Suit suit, bool pass, bool contra, bool recontra)
-: volume(volume), suit(suit), pass(pass), contra(contra),recontra(recontra)
+Bid::Bid(BidVolume volume, Suit suit)
+: volume(volume), suit(suit)
 {}
 
 

@@ -6,8 +6,8 @@
 
 class Deal
 {
-  UI m_Cards[CARD_COUNT];
-  Hand m_Hands[HAND_COUNT];
+  UI cards[CARD_COUNT];
+  Hand hands[HAND_COUNT];
 
     public:
         Deal();

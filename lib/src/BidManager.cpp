@@ -12,29 +12,43 @@ void BidManager::addBid(Bid bid)
     bids.push_back(bid);
 }
 
-Error BidManager::addBid(byte volume, Suit suit)
+Error BidManager::addBid(BidVolume volume, Suit suit)
 {
     Bid bid = Bid(volume, suit);
+    Bid* previousNonPassBid = getPreviousRegularBid();
+    if (previousNonPassBid && volume < previousNonPassBid->volume)
+    {
+        return CANT_ADD_BID;
+    }
+
+    if (previousNonPassBid && volume == previousNonPassBid->volume)
+    {
+        if (suit <= previousNonPassBid->suit)
+        {
+            return CANT_ADD_BID;
+        }
+    }
+
     addBid(bid);
     return SUCCESS;
 }
 
-void BidManager::addBid_Pass()
+void BidManager::pass()
 {
-    Bid bid = Bid(0, CLUB, true);
+    Bid bid = Bid(PASS, CLUB);
     addBid(bid);
 }
 
-Error BidManager::addBid_Contra()
+Error BidManager::contra()
 {
-    Bid bid = Bid(0, CLUB, false, true);
+    Bid bid = Bid(CONTRA, CLUB);
     addBid(bid);
     return SUCCESS;
 }
 
-Error BidManager::addBid_Recontra()
+Error BidManager::recontra()
 {
-    Bid bid = Bid(0, CLUB, false, false, true);
+    Bid bid = Bid(RECONTRA, CLUB);
     addBid(bid);
     return SUCCESS;
 }
@@ -47,4 +61,16 @@ Bid BidManager::getBid(byte id)
 Bid BidManager::getLastBid()
 {
     return bids.back();
+}
+
+Bid* BidManager::getPreviousRegularBid()
+{
+    auto iter = bids.rbegin();
+    while (++iter != bids.rend())
+    {
+        if (iter->volume > PASS)
+            return &*iter;
+    };
+
+    return nullptr;
 }

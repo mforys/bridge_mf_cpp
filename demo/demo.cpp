@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "BidManager.h"
 #include "Card.h"
 #include "Hand.h"
 #include "Deal.h"
@@ -8,10 +9,11 @@
 
 using namespace std;
 
+void printHand(Card *c);
+
 int main()
 {
     cout << "BRIDGE MF" << endl <<"---------"<<endl<<endl;
-    UI i;
 
     Deal d;
 
@@ -26,36 +28,47 @@ int main()
         cout << endl << "--------" << endl;
 
         Card *c = hand->getCards();
+        printHand(c);
+        cout << endl;
 
-        for (byte s=0; s<SUIT_COUNT; ++s)
+        BidManager bidManager;
+
+        bidManager.pass();
+        bidManager.addBid(ONE_B, CLUB);
+        bidManager.addBid(ONE_B, SPADE);
+        bidManager.contra();
+        bidManager.recontra();
+    }
+
+    return 0;
+}
+
+void printHand(Card *c)
+{
+    for (byte s=0; s<SUIT_COUNT; ++s)
+    {
+        switch(s)
         {
-        	switch(s)
-        	{
-        		case SPADE:
-        			cout << "S: ";
-        			break;
-        		case HEART:
-					cout << "H: ";
-					break;
-        		case DIAMOND:
-					cout << "D: ";
-					break;
-        		case CLUB:
-					cout << "C: ";
-					break;
-        	}
+            case SPADE:
+                cout << "S: ";
+                break;
+            case HEART:
+                cout << "H: ";
+                break;
+            case DIAMOND:
+                cout << "D: ";
+                break;
+            case CLUB:
+                cout << "C: ";
+                break;
+        }
 
-			for (i=0; i<CARD_HAND_COUNT; ++i)
-			{
-				if ((c+i)->suit() == s)
-					cout << (c+i)->rank_s();
-			}
-
-			cout << endl;
+        for (byte i=0; i < CARD_HAND_COUNT; ++i)
+        {
+            if ((c+i)->suit() == s)
+                cout << (c+i)->rank_s();
         }
 
         cout << endl;
     }
-
-    return 0;
 }
