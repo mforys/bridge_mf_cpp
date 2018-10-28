@@ -28,11 +28,8 @@ int main()
         cout << hand->getSuitCount(HEART) << "," << hand->getSuitCount(SPADE) <<"]";
         cout << endl << "--------" << endl;
 
-        Card *c = hand->getCards();
-        printHand(c);
+        cout << hand->print();
         cout << endl;
-
-
     }
 
     BidManager bidManager;
@@ -50,34 +47,4 @@ int main()
 
     cout << bidManager.getAllBids_s() << endl;
     return 0;
-}
-
-void printHand(Card *c)
-{
-    for (byte s=0; s<SUIT_COUNT; ++s)
-    {
-        switch(s)
-        {
-            case SPADE:
-                cout << "S: ";
-                break;
-            case HEART:
-                cout << "H: ";
-                break;
-            case DIAMOND:
-                cout << "D: ";
-                break;
-            case CLUB:
-                cout << "C: ";
-                break;
-        }
-
-        for (byte i=0; i < CARD_HAND_COUNT; ++i)
-        {
-            if ((c+i)->suit() == s)
-                cout << (c+i)->rank_s();
-        }
-
-        cout << endl;
-    }
 }

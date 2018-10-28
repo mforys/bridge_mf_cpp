@@ -84,22 +84,24 @@ const char Card::suit_s()
     }
 }
 
-const char Card::rank_s()
+std::string Card::rank_s()
 {
+    //std:string s;
+
     switch (r)
     {
     case ACE:
-        return 'A';
+        return "A";
     case KING:
-        return 'K';
+        return "K";
     case QUEEN:
-        return 'Q';
+        return "Q";
     case JACK:
-        return 'J';
+        return "J";
     case TEN:
-        return 'T';
+        return "T";
     default:
-        return (r + ASCII_2_CODE);
+        return std::string(1, char(r + ASCII_2_CODE));
     }
 }
 

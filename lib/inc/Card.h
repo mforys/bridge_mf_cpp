@@ -20,7 +20,7 @@ class Card
         Suit suit() const;
         Rank rank() const;
         const char suit_s();
-        const char rank_s();
+        std::string rank_s();
         Card(const Card& other);
         Card& operator=(const Card& other);
         bool operator==(const Card& rhs) const;

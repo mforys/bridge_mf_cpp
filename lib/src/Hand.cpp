@@ -160,3 +160,37 @@ bool Hand::operator==(const Hand& other) const
 
     return true;
 }
+
+std::string Hand::print()
+{
+    std::string output;
+    for (int s = SPADE; s >= CLUB; --s)
+    {
+        switch(s)
+        {
+            case SPADE:
+                output.append("S: ");
+                break;
+            case HEART:
+                output.append("H: ");
+                break;
+            case DIAMOND:
+                output.append("D: ");
+                break;
+            case CLUB:
+                output.append("C: ");
+                break;
+        }
+
+        for (byte i=0; i < CARD_HAND_COUNT; ++i)
+        {
+            auto c = cards[i];
+            if (c.suit() == s)
+                output.append(c.rank_s());
+        }
+
+        output.append("\n");
+    }
+
+    return output;
+}

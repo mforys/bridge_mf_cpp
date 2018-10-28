@@ -13,18 +13,20 @@ class Hand
   void quickSort(byte i, byte j);
 
 public:
-  Hand();
-  Hand(UI *i);
-  Hand(const Hand& other);
-  virtual ~Hand();
+    Hand();
+    Hand(UI *i);
+    Hand(const Hand& other);
+    virtual ~Hand();
 
-  void set(UI *first_card_in_hand);
-  Card * getCards();
-  UI getPoints() const;
-  UI getSuitCount(Suit s);
-  char getSeat(byte s);
-  virtual Hand& operator=(const Hand& other);
-  virtual bool operator==(const Hand& other) const;
+    void set(UI *first_card_in_hand);
+    Card * getCards();
+    UI getPoints() const;
+    UI getSuitCount(Suit s);
+    char getSeat(byte s);
+    std::string print();
+
+    virtual Hand& operator=(const Hand& other);
+    virtual bool operator==(const Hand& other) const;
 };
 
 #endif // HAND_H
