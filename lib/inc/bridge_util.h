@@ -24,7 +24,8 @@ enum Suit
     CLUB,
     DIAMOND,
     HEART,
-    SPADE
+    SPADE,
+    NO_TRUMP
 };
 
 enum Rank
@@ -68,6 +69,7 @@ enum BidVolume
 
 UI getRandomCard();
 UI getRandom(UI i);
-std::string suit_s(enum Suit suit);
+std::string suit_s(Suit suit);
+std::string seat_s(Seat seat);
 
 #endif // BRIDGE_UTIL_H_INCLUDED

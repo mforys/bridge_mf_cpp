@@ -7,8 +7,11 @@
 
 #include "BidManager.h"
 
-//#include <iostream>
 #include <string>
+
+BidManager::BidManager(Seat startSeat)
+: startSeat(startSeat)
+{}
 
 void BidManager::addBid(Bid bid)
 {
@@ -78,30 +81,40 @@ Bid* BidManager::getPreviousRegularBid()
     return nullptr;
 }
 
-std::string BidManager::getAllBids_s()
+std::string BidManager::printAllBids()
 {
-    std::string output;
+    std::string output = "\n\n         All bids    \n\n\n";
+    output.append("\tS\tW\tN\tE  \n");
+    output.append("---------------------\n");
+    output.append(" \t");
+    int currentSeat = startSeat;
+    for (auto i = (int) SOUTH; i < currentSeat; ++i)
+        output.append("\t-\t");
 
     for (const auto& bid : bids)
     {
         switch (bid.volume)
         {
             case RECONTRA:
-                output.append("RECONTRA");
+                output.append("xx");
                 break;
             case CONTRA:
-                output.append("CONTRA");
+                output.append("x");
                 break;
             case PASS:
-                output.append("PASS");
+                output.append("-");
                 break;
             default:
                 output.append(std::to_string(bid.volume));
-                output.append(" " + suit_s(bid.suit));
+                output.append(suit_s(bid.suit));
         }
 
-        output.append(" \n");
+        if (currentSeat++ % 4 == (int) EAST)
+            output.append(" \n");
+        output.append(" \t");
     }
 
+    output.append(" \n");
+    
     return output;
 }

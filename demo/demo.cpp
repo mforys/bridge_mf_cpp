@@ -32,7 +32,7 @@ int main()
         cout << endl;
     }
 
-    BidManager bidManager;
+    BidManager bidManager(SOUTH);
 
     bidManager.pass();
     bidManager.bid(ONE_B, CLUB);
@@ -42,9 +42,13 @@ int main()
     bidManager.bid(TWO_B, DIAMOND);
     bidManager.bid(TWO_B, HEART);
     bidManager.pass();
-    bidManager.pass();
     bidManager.bid(FOUR_B, HEART);
-
-    cout << bidManager.getAllBids_s() << endl;
+    bidManager.pass();
+    bidManager.bid(FOUR_B, NO_TRUMP);
+    bidManager.contra();
+    bidManager.bid(FIVE_B, DIAMOND);
+    bidManager.contra();
+    bidManager.bid(SIX_B, HEART);
+    cout << bidManager.printAllBids() << endl;
     return 0;
 }

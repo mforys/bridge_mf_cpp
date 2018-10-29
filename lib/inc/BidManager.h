@@ -16,8 +16,11 @@
 class BidManager
 {
     std::vector<Bid> bids;
+    Seat startSeat;
 
 public:
+    BidManager(Seat startSeat);
+
     void addBid(Bid bid);
     Error bid(BidVolume volume, Suit suit);
     void pass();
@@ -25,7 +28,7 @@ public:
     Error recontra();
     Bid getBid(byte id);
     Bid getLastBid();
-    std::string getAllBids_s();
+    std::string printAllBids();
 
 private:
     Bid* getPreviousRegularBid();
