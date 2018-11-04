@@ -6,4 +6,3 @@ add_executable (Bridge_MF_Demo demo.cpp)
 # public include directories we will use those link directories when building
 # helloDemo
 target_link_libraries (Bridge_MF_Demo bridge_mf)
-

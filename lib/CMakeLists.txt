@@ -5,7 +5,7 @@ file(GLOB SOURCES
     "src/*.cpp"
 )
 
-message ( ${SOURCES} )
+#message ( ${SOURCES} )
 
 add_library (bridge_mf SHARED ${SOURCES})
 
