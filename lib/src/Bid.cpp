@@ -11,7 +11,16 @@ Bid::Bid()
 {}
 
 Bid::Bid(BidVolume volume, Suit suit)
-: volume(volume), suit(suit)
+: v(volume), s(suit)
 {}
 
+BidVolume Bid::volume() const
+{
+    return v;
+}
+
+Suit Bid::suit() const
+{
+    return s;
+}
 

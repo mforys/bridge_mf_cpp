@@ -15,12 +15,15 @@
 class Bid
 {
     public:
-        BidVolume volume;
-        Suit suit;
-
         Bid(BidVolume volume, Suit suit);
 
+        BidVolume volume() const;
+        Suit suit() const;
+
     private:
+        BidVolume v;
+        Suit s;
+
         Bid();
 };
 

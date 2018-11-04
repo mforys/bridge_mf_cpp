@@ -22,14 +22,14 @@ Error BidManager::bid(BidVolume volume, Suit suit)
 {
     Bid bid = Bid(volume, suit);
     Bid* previousNonPassBid = getPreviousRegularBid();
-    if (previousNonPassBid && volume < previousNonPassBid->volume)
+    if (previousNonPassBid && volume < previousNonPassBid->volume())
     {
         return CANT_ADD_BID;
     }
 
-    if (previousNonPassBid && volume == previousNonPassBid->volume)
+    if (previousNonPassBid && volume == previousNonPassBid->volume())
     {
-        if (suit <= previousNonPassBid->suit)
+        if (suit <= previousNonPassBid->suit())
         {
             return CANT_ADD_BID;
         }
@@ -74,7 +74,7 @@ Bid* BidManager::getPreviousRegularBid()
     auto iter = bids.rbegin();
     while (++iter != bids.rend())
     {
-        if (iter->volume > PASS)
+        if (iter->volume() > PASS)
             return &*iter;
     };
 
@@ -93,7 +93,7 @@ std::string BidManager::printAllBids()
 
     for (const auto& bid : bids)
     {
-        switch (bid.volume)
+        switch (bid.volume())
         {
             case RECONTRA:
                 output.append("xx");
@@ -105,8 +105,8 @@ std::string BidManager::printAllBids()
                 output.append("-");
                 break;
             default:
-                output.append(std::to_string(bid.volume));
-                output.append(suit_s(bid.suit));
+                output.append(std::to_string(bid.volume()));
+                output.append(suit_s(bid.suit()));
         }
 
         if (currentSeat++ % 4 == (int) EAST)
