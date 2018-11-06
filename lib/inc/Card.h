@@ -13,6 +13,7 @@ class Card
         Card();
         Card(UI i);
         Card(Suit s, Rank r);
+        Card(const Card& other);
         virtual ~Card();
 	    
         void set(UI i);
@@ -21,7 +22,7 @@ class Card
         Rank rank() const;
         const char suit_s();
         std::string rank_s();
-        Card(const Card& other);
+
         Card& operator=(const Card& other);
         bool operator==(const Card& rhs) const;
         bool operator!=(const Card& rhs) const;

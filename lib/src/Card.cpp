@@ -131,3 +131,8 @@ bool Card::operator!=(const Card& rhs) const
 {
     return !(*this == rhs);
 }
+
+//Card& operator [](int Index)
+//{
+//    return
+//}

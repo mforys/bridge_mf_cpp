@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <functional>
 #include <iostream>
+#include <vector>
 
 Hand::Hand()
 {
@@ -13,6 +14,14 @@ Hand::Hand(const Hand& other)
     for (int i = 0; i < CARD_HAND_COUNT; ++i)
     {
         cards[i] = other.cards[i];
+    }
+}
+
+Hand::Hand(std::vector<Card>& aCards)
+{
+    for (int i = 0; i < CARD_HAND_COUNT; ++i)
+    {
+        cards[i] = aCards[i];
     }
 }
 

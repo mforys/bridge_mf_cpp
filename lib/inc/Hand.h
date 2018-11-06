@@ -15,6 +15,7 @@ class Hand
 public:
     Hand();
     Hand(UI *i);
+    Hand(std::vector<Card>& cards);
     Hand(const Hand& other);
     virtual ~Hand();
 
