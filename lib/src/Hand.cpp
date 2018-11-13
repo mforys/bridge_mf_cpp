@@ -11,10 +11,7 @@ Hand::Hand()
 
 Hand::Hand(const Hand& other)
 {
-    for (int i = 0; i < CARD_HAND_COUNT; ++i)
-    {
-        cards[i] = other.cards[i];
-    }
+    cards = other.cards;
 }
 
 Hand::Hand(std::vector<Card>& aCards)
