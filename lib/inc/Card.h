@@ -26,6 +26,8 @@ class Card
         Card& operator=(const Card& other);
         bool operator==(const Card& rhs) const;
         bool operator!=(const Card& rhs) const;
+        bool operator<(const Card& rhs) const;
+        bool operator>(const Card& rhs) const;
     protected:
     private:
 };

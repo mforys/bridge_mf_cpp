@@ -3,24 +3,23 @@
 
 #include "bridge_util.h"
 #include "Card.h"
+#include <array>
+
+typedef std::array<Card, CARD_HAND_COUNT> HandCards;
 
 class Hand
 {
-  Card cards[CARD_HAND_COUNT];
-
-  void swap(byte i, byte j);
-  byte divide(byte i, byte j);
-  void quickSort(byte i, byte j);
+    HandCards cards;
 
 public:
     Hand();
-    Hand(UI *i);
+    Hand(UI cards[]);
     Hand(std::vector<Card>& cards);
     Hand(const Hand& other);
     virtual ~Hand();
 
     void set(UI *first_card_in_hand);
-    Card * getCards();
+    const HandCards& getCards();
     UI getPoints() const;
     UI getSuitCount(Suit s);
     char getSeat(byte s);

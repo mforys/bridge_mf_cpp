@@ -35,53 +35,10 @@ void Hand::set(UI *first_card_in_hand)
         cards[j].set(*(first_card_in_hand + j));
     }
 
-    quickSort(0, CARD_HAND_COUNT - 1);
+    std::sort(cards.begin(), cards.end(), std::greater<Card>());
 }
 
-void Hand::swap(byte i, byte j)
-{
-    Card temp = cards[i];
-
-    cards[i] = cards[j];
-    cards[j] = temp;
-}
-
-byte Hand::divide(byte i, byte j)
-{
-    byte div_index = (i + j) / 2;
-    Card div = cards[div_index];
-
-    swap(div_index, j);
-
-    byte current_pos = i;
-
-    for (byte k = i; k < j; ++k)
-    {
-        if (cards[k].value() > div.value())
-        {
-            swap(k, current_pos);
-            current_pos++;
-        }
-    }
-
-    swap(j, current_pos);
-
-    return current_pos;
-}
-
-void Hand::quickSort(byte i, byte j)
-{
-    if (i < j)
-    {
-        byte k = divide(i, j);
-        if (k > i)
-            quickSort(i, k - 1);
-        if (k < j - 1)
-            quickSort(k + 1, j);
-    }
-}
-
-Card * Hand::getCards()
+const HandCards& Hand::getCards()
 {
     return cards;
 }
