@@ -18,7 +18,7 @@ public:
     Hand(const Hand& other);
     virtual ~Hand();
 
-    void set(UI *first_card_in_hand);
+    void set(Card *first_card_in_hand);
     const HandCards& getCards();
     UI getPoints() const;
     UI getSuitCount(Suit s);

@@ -28,11 +28,11 @@ Hand::Hand(std::vector<Card>& aCards)
 Hand::~Hand()
 {}
 
-void Hand::set(UI *first_card_in_hand)
+void Hand::set(Card *first_card_in_hand)
 {
     for (UI j = 0; j < CARD_HAND_COUNT; ++j)
     {
-        cards[j].set(*(first_card_in_hand + j));
+        cards[j] = *(first_card_in_hand + j);
     }
 
     std::sort(cards.begin(), cards.end(), std::greater<Card>());

@@ -4,15 +4,17 @@
 #include "bridge_util.h"
 #include "Hand.h"
 
+typedef std::array<Card, CARD_COUNT> DealCards;
+
 class Deal
 {
-    UI cards[CARD_COUNT];
+    DealCards cards;
     Hand hands[HAND_COUNT];
 
     public:
         Deal();
         virtual ~Deal();
-        UI * getCards();
+        const DealCards& getCards();
         Hand * getHand(UI i);
 
     protected:

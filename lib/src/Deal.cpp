@@ -7,7 +7,7 @@ using namespace std;
 
 void Deal::swap(UI i, UI j)
 {
-    UI temp = cards[i];
+    auto temp = cards[i];
     cards[i] = cards[j];
     cards[j] = temp;
 }
@@ -29,7 +29,7 @@ Deal::Deal()
 
     // generate Hands
     for (UI h = 0; h < HAND_COUNT; ++h)
-        hands[h].set(cards + h*CARD_HAND_COUNT);
+        hands[h].set(&cards[h*CARD_HAND_COUNT]);
 }
 
 Deal::~Deal()
@@ -37,7 +37,7 @@ Deal::~Deal()
     //dtor
 }
 
-UI * Deal::getCards()
+const DealCards& Deal::getCards()
 {
     return cards;
 }
