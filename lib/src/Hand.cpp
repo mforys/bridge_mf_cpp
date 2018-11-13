@@ -103,10 +103,7 @@ Hand& Hand::operator=(const Hand& other)
 {
     if (this != &other) // protect against invalid self-assignment
     {
-        for (byte i = 0; i < CARD_HAND_COUNT; ++i)
-        {
-            cards[i] = other.cards[i];
-        }
+        cards = other.cards;
     }
 
     // by convention, always return *this
