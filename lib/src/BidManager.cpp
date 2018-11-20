@@ -83,13 +83,13 @@ Bid* BidManager::getPreviousRegularBid()
 
 std::string BidManager::printAllBids()
 {
-    std::string output = "\n\n         All bids    \n\n\n";
-    output.append("\tS\tW\tN\tE  \n");
-    output.append("---------------------\n");
-    output.append(" \t");
+    std::string output = "\n\n                All bids    \n\n\n";
+    output.append("\t\tS\t\tW\t\tN\t\tE  \n");
+    output.append("-----------------------------------------\n");
+    output.append(" \t\t");
     int currentSeat = startSeat;
     for (auto i = (int) SOUTH; i < currentSeat; ++i)
-        output.append("\t-\t");
+        output.append("\t\t-\t\t");
 
     for (const auto& bid : bids)
     {
@@ -109,9 +109,15 @@ std::string BidManager::printAllBids()
                 output.append(suit_s(bid.suit()));
         }
 
-        if (currentSeat++ % 4 == (int) EAST)
+        bool isLastSeatInRow = currentSeat++ % 4 == (int) EAST;
+
+        if (isLastSeatInRow)
             output.append(" \n");
-        output.append(" \t");
+
+        if (bid.suit() == NO_TRUMP && !isLastSeatInRow)
+            output.append(" \t");
+        else
+            output.append(" \t\t");
     }
 
     output.append(" \n");

@@ -18,7 +18,7 @@ int main()
 
     Deal d;
 
-    for (byte h=0; h<HAND_COUNT; ++h)
+    for (byte h = 0; h < HAND_COUNT; ++h)
     {
 
         Hand *hand = d.getHand(h);
