@@ -9,9 +9,8 @@ TEST (CardTest, Basic) {
 }
 
 TEST (CardTest, set) {
-    Card card;
+    Card card(0);
 
-    card.set(0);
     EXPECT_EQ (card.suit(), CLUB);
     EXPECT_EQ (card.rank(), TWO);
 

@@ -5,9 +5,9 @@
 
 class Card
 {
-   Suit s;
-   Rank r;
-   byte v;
+        Suit s;
+        Rank r;
+        byte v;
 
     public:
         Card();
