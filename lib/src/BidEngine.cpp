@@ -5,7 +5,7 @@ BidEngine::BidEngine(const Deal& deal)
 {
 }
 
-Bid proposeBid()
+Bid BidEngine::proposeBid()
 {
     return Bid(ONE_B,CLUB);
 }

@@ -20,6 +20,9 @@ class Bid
         BidVolume volume() const;
         Suit suit() const;
 
+        bool operator<(const Bid& rhs) const;
+        bool operator>(const Bid& rhs) const;
+
     private:
         BidVolume v;
         Suit s;

@@ -24,3 +24,22 @@ Suit Bid::suit() const
     return s;
 }
 
+bool Bid::operator<(const Bid& rhs) const
+{
+    if (this->volume() == rhs.volume())
+    {
+        return this->s < rhs.s;
+    }
+
+    return this->volume() < rhs.volume();
+}
+
+bool Bid::operator>(const Bid& rhs) const
+{
+    if (this->volume() == rhs.volume())
+    {
+        return this->s > rhs.s;
+    }
+
+    return this->volume() > rhs.volume();
+}
