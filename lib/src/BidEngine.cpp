@@ -7,5 +7,5 @@ BidEngine::BidEngine(const Deal& deal)
 
 Bid BidEngine::proposeBid()
 {
-    return Bid(ONE_B,CLUB);
+    return bidManager.veryNextBid();
 }

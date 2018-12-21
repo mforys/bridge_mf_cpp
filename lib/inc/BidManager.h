@@ -28,6 +28,7 @@ public:
     Error recontra();
     Bid getBid(byte id);
     Bid getLastBid();
+    Bid veryNextBid();
     std::string printAllBids();
 
 private:

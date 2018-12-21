@@ -34,21 +34,14 @@ int main()
 
     BidManager bidManager(SOUTH);
 
-    bidManager.pass();
-    bidManager.bid(ONE_B, CLUB);
-    bidManager.bid(ONE_B, SPADE);
-    bidManager.contra();
-    bidManager.recontra();
-    bidManager.bid(TWO_B, DIAMOND);
-    bidManager.bid(TWO_B, HEART);
-    bidManager.pass();
-    bidManager.bid(FOUR_B, HEART);
-    bidManager.pass();
-    bidManager.bid(FOUR_B, NO_TRUMP);
-    bidManager.contra();
-    bidManager.bid(FIVE_B, DIAMOND);
-    bidManager.contra();
-    bidManager.bid(SIX_B, HEART);
+    while (true)
+    {
+        auto bid = bidManager.veryNextBid();
+        bidManager.addBid(bid);
+        if (bid.volume() == SEVEN_B & bid.suit() == NO_TRUMP)
+            break;
+    }
+
     cout << bidManager.printAllBids() << endl;
     return 0;
 }

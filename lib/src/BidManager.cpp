@@ -66,6 +66,10 @@ Bid BidManager::getBid(byte id)
 
 Bid BidManager::getLastBid()
 {
+    if (bids.empty())
+    {
+        return Bid(NO_BID, NO_TRUMP);
+    }
     return bids.back();
 }
 
@@ -123,4 +127,42 @@ std::string BidManager::printAllBids()
     output.append(" \n");
     
     return output;
+}
+
+Bid BidManager::veryNextBid()
+{
+    auto lastBid = getLastBid();
+
+    if (lastBid.volume() == NO_BID)
+    {
+        return Bid(ONE_B, CLUB);
+    }
+
+    Suit suit = CLUB;
+    BidVolume volume = lastBid.volume();
+
+    switch (lastBid.suit())
+    {
+        case CLUB:
+            suit = DIAMOND;
+            break;
+        case DIAMOND:
+            suit = HEART;
+            break;
+        case HEART:
+            suit = SPADE;
+            break;
+        case SPADE:
+            suit = NO_TRUMP;
+            break;
+        case NO_TRUMP:
+            suit = CLUB;
+            volume = static_cast<BidVolume>((static_cast<int>(lastBid.volume()) + 1));
+            break;
+        default:
+            suit = CLUB;
+            volume = CONTRA;
+    }
+
+    return Bid(volume,suit);
 }

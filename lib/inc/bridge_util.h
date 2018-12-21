@@ -55,6 +55,7 @@ enum Error
 
 enum BidVolume
 {
+    NO_BID = -3,
     CONTRA = -2,
     RECONTRA = -1,
     PASS = 0,
