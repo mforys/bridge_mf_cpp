@@ -15,13 +15,14 @@
 class Bid
 {
     public:
-        Bid(BidVolume volume, Suit suit);
+        Bid(BidVolume volume, Suit suit = NO_TRUMP);
 
         BidVolume volume() const;
         Suit suit() const;
 
         bool operator<(const Bid& rhs) const;
         bool operator>(const Bid& rhs) const;
+        Bid  operator++(int);
 
     private:
         BidVolume v;

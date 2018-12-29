@@ -34,13 +34,14 @@ int main()
 
     BidManager bidManager(SOUTH);
 
-    while (true)
+    auto bid = Bid(NO_BID);
+
+    do
     {
-        auto bid = bidManager.veryNextBid();
+        bid = bid++;
         bidManager.addBid(bid);
-        if (bid.volume() == SEVEN_B & bid.suit() == NO_TRUMP)
-            break;
     }
+    while (bid.volume() != SEVEN_B || bid.suit() != NO_TRUMP);
 
     cout << bidManager.printAllBids() << endl;
     return 0;
