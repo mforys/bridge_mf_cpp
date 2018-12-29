@@ -19,6 +19,7 @@ class Bid
 
         BidVolume volume() const;
         Suit suit() const;
+        bool isInvalid() const;
 
         bool operator<(const Bid& rhs) const;
         bool operator>(const Bid& rhs) const;

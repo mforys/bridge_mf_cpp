@@ -21,7 +21,8 @@ class BidManager
 public:
     BidManager(Seat startSeat = SOUTH);
 
-    void addBid(Bid bid);
+    Error addBid(Bid bid);
+    bool isPassRoundCompleted();
     Error bid(BidVolume volume, Suit suit);
     void pass();
     Error contra();
@@ -29,11 +30,13 @@ public:
     Bid getBid(byte id);
     Bid getLastBid();
     Bid getLastPartnerBid();
+    Bid getPreviousRegularBid();
+    Seat getCurrentSeat();
     Bid veryNextBid();
     std::string printAllBids();
 
 private:
-    Bid* getPreviousRegularBid();
+
 };
 
 #endif /* BidManager_h */

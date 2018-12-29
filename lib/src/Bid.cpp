@@ -12,7 +12,10 @@ Bid::Bid()
 
 Bid::Bid(BidVolume volume, Suit suit)
 : v(volume), s(suit)
-{}
+{
+    if (volume > SEVEN_B)
+        v = NO_BID;
+}
 
 BidVolume Bid::volume() const
 {
@@ -22,6 +25,16 @@ BidVolume Bid::volume() const
 Suit Bid::suit() const
 {
     return s;
+}
+
+bool Bid::isInvalid() const
+{
+    if (v == NO_BID || v > SEVEN_B)
+    {
+        return true;
+    }
+
+    return false;
 }
 
 bool Bid::operator<(const Bid& rhs) const
@@ -49,6 +62,11 @@ Bid Bid::operator++(int)
     if (this->volume() == NO_BID)
     {
         return Bid(ONE_B, CLUB);
+    }
+
+    if (this->volume() == SEVEN_B && this->suit() == NO_TRUMP)
+    {
+        return Bid(PASS);
     }
 
     Suit suit = CLUB;

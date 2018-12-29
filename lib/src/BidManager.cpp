@@ -13,30 +13,60 @@ BidManager::BidManager(Seat startSeat)
 : startSeat(startSeat)
 {}
 
-void BidManager::addBid(Bid bid)
-{
-    bids.push_back(bid);
-}
-
 Error BidManager::bid(BidVolume volume, Suit suit)
 {
-    Bid bid = Bid(volume, suit);
-    Bid* previousNonPassBid = getPreviousRegularBid();
-    if (previousNonPassBid && volume < previousNonPassBid->volume())
+    return addBid(Bid(volume, suit));
+}
+
+Error BidManager::addBid(Bid bid)
+{
+    if (bid.isInvalid())
+    {
+        return WRONG_BID;
+    }
+
+    if (bid.volume() != PASS)
+    {
+        Bid previousNonPassBid = getPreviousRegularBid();
+        if (bid.volume() < previousNonPassBid.volume())
+        {
+            return CANT_ADD_BID;
+        }
+
+        if (bid.volume() == previousNonPassBid.volume())
+        {
+            if (bid.suit() <= previousNonPassBid.suit())
+            {
+                return CANT_ADD_BID;
+            }
+        }
+    }
+
+    bids.push_back(bid);
+
+    if (isPassRoundCompleted())
     {
         return CANT_ADD_BID;
     }
 
-    if (previousNonPassBid && volume == previousNonPassBid->volume())
+    return SUCCESS;
+}
+
+bool BidManager::isPassRoundCompleted()
+{
+    if (bids.size() < 4)
     {
-        if (suit <= previousNonPassBid->suit())
-        {
-            return CANT_ADD_BID;
-        }
+        return false;
     }
 
-    addBid(bid);
-    return SUCCESS;
+    if (bids.rbegin()[0].volume() == PASS &&
+        bids.rbegin()[1].volume() == PASS &&
+        bids.rbegin()[2].volume() == PASS)
+    {
+        return true;
+    }
+
+    return false;
 }
 
 void BidManager::pass()
@@ -82,16 +112,28 @@ Bid BidManager::getLastPartnerBid()
     return bids.rbegin()[1];
 }
 
-Bid* BidManager::getPreviousRegularBid()
+Bid BidManager::getPreviousRegularBid()
 {
-    auto iter = bids.rbegin();
-    while (++iter != bids.rend())
+    if (bids.size())
     {
-        if (iter->volume() > PASS)
-            return &*iter;
-    };
+        auto iter = bids.rbegin();
+        while (iter != bids.rend())
+        {
+            if (iter->volume() != PASS)
+                return *iter;
+            iter++;
+        };
+    }
 
-    return nullptr;
+    return Bid(NO_BID, NO_TRUMP);
+}
+
+Seat BidManager::getCurrentSeat()
+{
+    auto bidCounter = bids.size();
+
+    return (Seat) ((bidCounter % 4) + startSeat);
+
 }
 
 std::string BidManager::printAllBids()
@@ -127,7 +169,7 @@ std::string BidManager::printAllBids()
         if (isLastSeatInRow)
             output.append(" \n");
 
-        if (bid.suit() == NO_TRUMP && !isLastSeatInRow)
+        if ((bid.volume() != PASS && bid.suit() == NO_TRUMP) && !isLastSeatInRow)
             output.append(" \t");
         else
             output.append(" \t\t");

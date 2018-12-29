@@ -15,7 +15,7 @@ class Deal
         Deal();
         virtual ~Deal();
         const DealCards& getCards();
-        Hand * getHand(UI i);
+        Hand& getHand(UI i);
 
     protected:
     private:

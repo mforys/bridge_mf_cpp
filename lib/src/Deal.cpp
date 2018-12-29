@@ -42,7 +42,7 @@ const DealCards& Deal::getCards()
     return cards;
 }
 
-Hand * Deal::getHand(UI i)
+Hand& Deal::getHand(UI i)
 {
-    return &hands[i];
+    return hands[i];
 }

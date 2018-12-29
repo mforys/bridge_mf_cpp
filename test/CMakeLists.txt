@@ -10,9 +10,11 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 #include_directories(../bridge_mf/inc)
 
+file(GLOB TEST_SOURCES *.cc *.cpp)
+
 # Add executable called "helloDemo" that is built from the source files
 # "demo.cxx" and "demo_b.cxx". The extensions are automatically found.
-add_executable (Bridge_MF_test gtest_main.cc Bid_test.cpp BidManager_test.cpp Card_test.cpp)
+add_executable (Bridge_MF_test ${TEST_SOURCES})
 
 # Link the executable to the Hello library. Since the Hello library has
 # public include directories we will use those link directories when building

@@ -2,6 +2,7 @@
 #include <cstdlib>
 
 #include "BidManager.h"
+#include "BidProposer.h"
 #include "Card.h"
 #include "Hand.h"
 #include "Deal.h"
@@ -21,27 +22,31 @@ int main()
     for (byte h = 0; h < HAND_COUNT; ++h)
     {
 
-        Hand *hand = d.getHand(h);
+        Hand& hand = d.getHand(h);
 
-        cout << "Hand " << hand->getSeat(h) << ", Points = " << hand->getPoints();
-        cout << ", Suits = [" << hand->getSuitCount(SPADE)<<","<< hand->getSuitCount(HEART)<<",";
-        cout << hand->getSuitCount(DIAMOND) << "," << hand->getSuitCount(CLUB) <<"]";
+        cout << "Hand " << hand.getSeat(h) << ", Points = " << hand.getPoints();
+        cout << ", Suits = [" << hand.getSuitCount(SPADE)<<","<< hand.getSuitCount(HEART)<<",";
+        cout << hand.getSuitCount(DIAMOND) << "," << hand.getSuitCount(CLUB) <<"]";
         cout << endl << "--------" << endl;
 
-        cout << hand->print();
+        cout << hand.print();
         cout << endl;
     }
 
     BidManager bidManager(SOUTH);
-
-    auto bid = Bid(NO_BID);
+    BidProposer bidProposer(bidManager, d);
+    Bid bid(NO_BID);
 
     do
     {
-        bid = bid++;
-        bidManager.addBid(bid);
+        bid = bidProposer.proposeBid();
+
+        if (bidManager.addBid(bid) != SUCCESS)
+        {
+            break;
+        }
     }
-    while (bid.volume() != SEVEN_B || bid.suit() != NO_TRUMP);
+    while (true);
 
     cout << bidManager.printAllBids() << endl;
     return 0;
