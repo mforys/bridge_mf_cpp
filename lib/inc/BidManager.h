@@ -19,7 +19,7 @@ class BidManager
     Seat startSeat;
 
 public:
-    BidManager(Seat startSeat);
+    BidManager(Seat startSeat = SOUTH);
 
     void addBid(Bid bid);
     Error bid(BidVolume volume, Suit suit);
@@ -28,6 +28,7 @@ public:
     Error recontra();
     Bid getBid(byte id);
     Bid getLastBid();
+    Bid getLastPartnerBid();
     Bid veryNextBid();
     std::string printAllBids();
 

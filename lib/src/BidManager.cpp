@@ -73,6 +73,15 @@ Bid BidManager::getLastBid()
     return bids.back();
 }
 
+Bid BidManager::getLastPartnerBid()
+{
+    if (bids.size() < 2)
+    {
+        return Bid(NO_BID, NO_TRUMP);
+    }
+    return bids.rbegin()[1];
+}
+
 Bid* BidManager::getPreviousRegularBid()
 {
     auto iter = bids.rbegin();
