@@ -68,6 +68,15 @@ enum BidVolume
     SEVEN_B
 };
 
+enum GamePattern
+{
+    NO_PATTERN = 0,
+    DEFENCE_GAME,
+    SUIT_GAME,
+    TWO_SUIT_GAME,
+    NO_TRUMP_GAME
+};
+
 UI getRandomCard();
 UI getRandom(UI i);
 std::string suit_s(Suit suit);

@@ -14,6 +14,7 @@ class Hand
 public:
     Hand();
     Hand(UI cards[]);
+    Hand(HandCards& cards);
     Hand(std::vector<Card>& cards);
     Hand(const Hand& other);
     virtual ~Hand();
@@ -21,7 +22,12 @@ public:
     void set(Card *first_card_in_hand);
     const HandCards& getCards();
     UI getPoints() const;
-    UI getSuitCount(Suit s);
+    Suit getLongestSuit() const;
+    Suit getSecondLongestSuit() const;
+    UI getSuitCount(Suit s) const;
+    bool isFitInSuit(Suit s) const;
+    bool isRenonse() const;
+    GamePattern getGamePattern() const;
     char getSeat(byte s);
     std::string print();
 

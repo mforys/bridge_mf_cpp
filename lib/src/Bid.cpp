@@ -8,7 +8,9 @@
 #include "Bid.h"
 
 Bid::Bid()
-{}
+: v(NO_BID), s(NO_TRUMP)
+{
+}
 
 Bid::Bid(BidVolume volume, Suit suit)
 : v(volume), s(suit)

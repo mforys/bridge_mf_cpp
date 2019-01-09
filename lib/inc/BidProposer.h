@@ -20,8 +20,21 @@ public:
 
 private:
 
+    Bid openingBid();
+    Bid responseBid();
+    Bid entryBid();
+    Bid firstResponse();
+    Bid nextResponse();
+    bool isPremiumGamePossible();
+
     BidManager& bidManager;
     Deal& deal;
+    Hand currentHand;
+    UI points;
+    Suit longestSuit;
+    Bid previousRegularBid;
+    Bid lastPartnerBid;
+    GamePattern handStyle;
 };
 
 #endif /* BidProposer_h */

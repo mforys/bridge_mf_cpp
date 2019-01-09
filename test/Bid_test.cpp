@@ -3,6 +3,14 @@
 
 TEST (BidTest, Basic)
 {
+    Bid bid;
+
+    EXPECT_EQ (bid.volume(), NO_BID);
+    EXPECT_EQ (bid.suit(), NO_TRUMP);
+}
+
+TEST (BidTest, Basic_with_args)
+{
     Bid bid(ONE_B, CLUB);
 
     EXPECT_EQ (bid.volume(), ONE_B);

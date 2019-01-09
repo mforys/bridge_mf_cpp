@@ -15,6 +15,7 @@
 class Bid
 {
     public:
+        Bid();
         Bid(BidVolume volume, Suit suit = NO_TRUMP);
 
         BidVolume volume() const;
@@ -28,8 +29,6 @@ class Bid
     private:
         BidVolume v;
         Suit s;
-
-        Bid();
 };
 
 #endif /* Bid_h */

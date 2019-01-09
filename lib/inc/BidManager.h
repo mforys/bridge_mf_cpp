@@ -30,6 +30,7 @@ public:
     Bid getBid(byte id);
     Bid getLastBid();
     Bid getLastPartnerBid();
+    Bid getMyLastBid();
     Bid getPreviousRegularBid();
     Seat getCurrentSeat();
     Bid veryNextBid();

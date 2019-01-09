@@ -98,7 +98,7 @@ Bid BidManager::getLastBid()
 {
     if (bids.empty())
     {
-        return Bid(NO_BID, NO_TRUMP);
+        return Bid(NO_BID);
     }
     return bids.back();
 }
@@ -107,9 +107,18 @@ Bid BidManager::getLastPartnerBid()
 {
     if (bids.size() < 2)
     {
-        return Bid(NO_BID, NO_TRUMP);
+        return Bid(NO_BID);
     }
     return bids.rbegin()[1];
+}
+
+Bid BidManager::getMyLastBid()
+{
+    if (bids.size() < 4)
+    {
+        return Bid(NO_BID);
+    }
+    return bids.rbegin()[3];
 }
 
 Bid BidManager::getPreviousRegularBid()
