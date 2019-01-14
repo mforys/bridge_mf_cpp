@@ -22,6 +22,7 @@ class Bid
         Suit suit() const;
         bool isInvalid() const;
 
+        bool operator==(const Bid& rhs) const;
         bool operator<(const Bid& rhs) const;
         bool operator>(const Bid& rhs) const;
         Bid  operator++(int);

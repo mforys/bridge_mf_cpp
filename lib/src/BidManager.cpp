@@ -137,6 +137,15 @@ Bid BidManager::getPreviousRegularBid()
     return Bid(NO_BID, NO_TRUMP);
 }
 
+Bid BidManager::getFirstBid(Seat s)
+{
+    auto seatDiff = s - startSeat;
+    if (seatDiff >= 0)
+        return bids[seatDiff];
+    else
+        return bids[seatDiff + 4];
+}
+
 Seat BidManager::getCurrentSeat()
 {
     auto bidCounter = bids.size();

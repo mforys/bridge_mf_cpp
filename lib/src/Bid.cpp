@@ -39,6 +39,17 @@ bool Bid::isInvalid() const
     return false;
 }
 
+bool Bid::operator==(const Bid& rhs) const
+{
+    if (this->volume() == rhs.volume() &&
+        this->suit() == rhs.suit())
+    {
+        return true;
+    }
+    
+    return false;
+}
+
 bool Bid::operator<(const Bid& rhs) const
 {
     if (this->volume() == rhs.volume())

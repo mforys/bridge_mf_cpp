@@ -133,14 +133,21 @@ Bid BidProposer::firstResponse()
 Bid BidProposer::nextResponse()
 {
     // is premium game possible?
+    if (!isPremiumGamePossible())
+    {
+        return Bid(PASS);
+    }
+    
     // which suit or no trump?
-    return Bid(PASS);
+    return Bid(THREE_B, NO_TRUMP);
 }
 
 bool BidProposer::isPremiumGamePossible()
 {
     UI partnerPointsLimitUp = 0;
     UI partnerPointsLimitDown = 0;
+    
+    
 
     
     return false;

@@ -32,6 +32,7 @@ public:
     Bid getLastPartnerBid();
     Bid getMyLastBid();
     Bid getPreviousRegularBid();
+    Bid getFirstBid(Seat s);
     Seat getCurrentSeat();
     Bid veryNextBid();
     std::string printAllBids();
