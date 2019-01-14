@@ -150,8 +150,22 @@ Seat BidManager::getCurrentSeat()
 {
     auto bidCounter = bids.size();
 
-    return (Seat) ((bidCounter % 4) + startSeat);
+    return (Seat) ((bidCounter + startSeat - 1) % 4);
+}
 
+Seat BidManager::getPartnerSeatOfCurrentSeat()
+{
+    auto currentSeat = getCurrentSeat();
+    
+    switch (currentSeat)
+    {
+        case SOUTH: return NORTH;
+        case WEST:  return EAST;
+        case NORTH: return SOUTH;
+        case EAST:  return WEST;
+        default:
+            assert(false);
+    }
 }
 
 std::string BidManager::printAllBids()

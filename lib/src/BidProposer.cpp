@@ -147,8 +147,15 @@ bool BidProposer::isPremiumGamePossible()
     UI partnerPointsLimitUp = 0;
     UI partnerPointsLimitDown = 0;
     
+    auto partnerSeat = bidManager.getPartnerSeatOfCurrentSeat();
     
-
+    auto firstPartnerBid = bidManager.getFirstBid(partnerSeat);
+    
+    if (firstPartnerBid == Bid(PASS))
+    {
+        partnerPointsLimitUp = 11;
+    }
+    
     
     return false;
 }

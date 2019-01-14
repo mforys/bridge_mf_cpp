@@ -85,3 +85,16 @@ TEST (BidManagerTest, getFirstBid_EAST)
     EXPECT_EQ (Bid(ONE_B, SPADE),       manager.getFirstBid(WEST));
     EXPECT_EQ (Bid(ONE_B, NO_TRUMP),    manager.getFirstBid(NORTH));
 }
+
+TEST (BidManagerTest, getPartnerSeatOfCurrentSeat)
+{
+    BidManager manager(EAST);
+    manager.addBid(Bid(ONE_B, DIAMOND));
+    EXPECT_EQ (WEST,     manager.getPartnerSeatOfCurrentSeat());
+    manager.addBid(PASS);
+    EXPECT_EQ (NORTH,     manager.getPartnerSeatOfCurrentSeat());
+    manager.addBid(Bid(ONE_B, SPADE));
+    EXPECT_EQ (EAST,     manager.getPartnerSeatOfCurrentSeat());
+    manager.addBid(Bid(ONE_B, NO_TRUMP));
+    EXPECT_EQ (SOUTH,     manager.getPartnerSeatOfCurrentSeat());
+}
