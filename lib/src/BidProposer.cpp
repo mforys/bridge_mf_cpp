@@ -147,17 +147,57 @@ bool BidProposer::isPremiumGamePossible()
     UI partnerPointsLimitUp = 0;
     UI partnerPointsLimitDown = 0;
     
-    auto partnerSeat = bidManager.getPartnerSeatOfCurrentSeat();
-    
-    auto firstPartnerBid = bidManager.getFirstBid(partnerSeat);
-    
-    if (firstPartnerBid == Bid(PASS))
+    if (isFirstPartnerBidOpening())
+    {
+        partnerPointsLimitUp = 21;
+        partnerPointsLimitDown = 12;
+    }
+    else if (isPartnerResponsePositive())
     {
         partnerPointsLimitUp = 11;
+        partnerPointsLimitDown = 7;
+    }
+    else
+    {
+        partnerPointsLimitUp = 6;
+        partnerPointsLimitDown = 0;
     }
     
+    //auto totalOurPointsLimitUp = partnerPointsLimitUp + points;
+    auto totalOurPointsLimitDown = partnerPointsLimitDown + points;
     
+    if (totalOurPointsLimitDown > 24)
+        return true;
+
     return false;
 }
 
+bool BidProposer::isFirstPartnerBidOpening()
+{
+    auto partnerSeat = bidManager.getPartnerSeatOfCurrentSeat();
+    auto firstPartnerBid = bidManager.getFirstBid(partnerSeat);
+    auto myFirstBid = bidManager.getFirstBidOfCurrentSeat();
+    
+    if (firstPartnerBid < myFirstBid)
+        return true;
 
+    return false;
+}
+
+bool BidProposer::isPartnerResponsePositive()
+{
+    auto partnerSeat = bidManager.getPartnerSeatOfCurrentSeat();
+    auto firstPartnerBid = bidManager.getFirstBid(partnerSeat);
+    auto myFirstBid = bidManager.getFirstBidOfCurrentSeat();
+    
+    if (firstPartnerBid < myFirstBid)
+        assert(false);
+    
+    if (firstPartnerBid == Bid(PASS) &&
+        bidManager.getSecondBid(partnerSeat) == Bid(PASS))
+    {
+            return false;
+    }
+    
+    return true;
+}

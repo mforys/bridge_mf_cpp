@@ -33,6 +33,8 @@ public:
     Bid getMyLastBid();
     Bid getPreviousRegularBid();
     Bid getFirstBid(Seat s);
+    Bid getSecondBid(Seat s);
+    Bid getFirstBidOfCurrentSeat();
     Seat getCurrentSeat();
     Seat getPartnerSeatOfCurrentSeat();
     Bid veryNextBid();

@@ -26,6 +26,8 @@ private:
     Bid firstResponse();
     Bid nextResponse();
     bool isPremiumGamePossible();
+    bool isFirstPartnerBidOpening();
+    bool isPartnerResponsePositive();
 
     BidManager& bidManager;
     Deal& deal;

@@ -146,6 +146,20 @@ Bid BidManager::getFirstBid(Seat s)
         return bids[seatDiff + 4];
 }
 
+Bid BidManager::getSecondBid(Seat s)
+{
+    auto seatDiff = s - startSeat;
+    if (seatDiff >= 0)
+        return bids[seatDiff + 4];
+    else
+        return bids[seatDiff + 2 * 4];
+}
+
+Bid BidManager::getFirstBidOfCurrentSeat()
+{
+    return getFirstBid(getCurrentSeat());
+}
+
 Seat BidManager::getCurrentSeat()
 {
     auto bidCounter = bids.size();
