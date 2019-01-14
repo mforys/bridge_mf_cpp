@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 2.8.11)
-project (BRIDGE_MF)
+project (Bridge_MF)
 
 set (CMAKE_CXX_STANDARD 11)
 
