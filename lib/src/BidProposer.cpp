@@ -135,11 +135,25 @@ Bid BidProposer::nextResponse()
     // is premium game possible?
     if (!isPremiumGamePossible())
     {
+        // TODO: cue-bid logic
         return Bid(PASS);
     }
     
-    // which suit or no trump?
-    return Bid(THREE_B, NO_TRUMP);
+    auto bestSuit = bestSuitToPlay();
+
+    switch (bestSuit)
+    {
+        case NO_TRUMP:
+            return Bid(THREE_B, NO_TRUMP);
+        case CLUB:
+        case DIAMOND:
+            return Bid(FIVE_B, bestSuit);
+        case HEART:
+        case SPADE:
+            return Bid(FOUR_B, bestSuit);
+        default:
+            assert(false);
+    }
 }
 
 bool BidProposer::isPremiumGamePossible()
@@ -200,4 +214,17 @@ bool BidProposer::isPartnerResponsePositive()
     }
     
     return true;
+}
+
+Suit BidProposer::bestSuitToPlay()
+{
+    auto gamePattern =  currentHand.getGamePattern();
+
+    if (gamePattern == SUIT_GAME ||
+        gamePattern == TWO_SUIT_GAME)
+    {
+        return currentHand.getLongestSuit();
+    }
+
+    return NO_TRUMP;
 }

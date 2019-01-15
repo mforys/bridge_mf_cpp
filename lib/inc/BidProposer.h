@@ -28,6 +28,7 @@ private:
     bool isPremiumGamePossible();
     bool isFirstPartnerBidOpening();
     bool isPartnerResponsePositive();
+    Suit bestSuitToPlay();
 
     BidManager& bidManager;
     Deal& deal;
