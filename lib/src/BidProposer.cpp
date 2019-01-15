@@ -21,18 +21,10 @@ Bid BidProposer::proposeBid()
 
 Bid BidProposer::proposeBid(Seat seat)
 {
-    currentHand = deal.getHand(seat);
-    points = currentHand.getPoints();
-    longestSuit = currentHand.getLongestSuit();
-    previousRegularBid = bidManager.getPreviousRegularBid();
-    lastPartnerBid = bidManager.getLastPartnerBid();
-    handStyle = currentHand.getGamePattern();
-
     if (previousRegularBid.isInvalid())
     {
         // opening
         return openingBid();
-
     }
     else if (!lastPartnerBid.isInvalid() && lastPartnerBid.volume() != PASS)
     {
