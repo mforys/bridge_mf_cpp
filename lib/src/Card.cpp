@@ -8,7 +8,17 @@
 Card::Card()
 {
     //ctor
-    UI i = getRandomCard();
+    UI i = getRandom();
+
+    v = i;
+    r = (Rank) (i % CARD_HAND_COUNT);
+    s = (Suit) (i / CARD_HAND_COUNT);
+}
+
+Card::Card(Suit suit)
+{
+    //ctor
+    UI i = getRandom(suit * CARD_HAND_COUNT, suit * (CARD_HAND_COUNT + 1));
 
     v = i;
     r = (Rank) (i % CARD_HAND_COUNT);
@@ -67,6 +77,18 @@ Suit Card::suit() const
 Rank Card::rank() const
 {
     return r;
+}
+
+UI Card::points() const
+{
+    switch (v)
+    {
+        case ACE:   return 4;
+        case KING:  return 3;
+        case QUEEN: return 2;
+        case JACK:  return 1;
+        default:    return 0;
+    }
 }
 
 const char Card::suit_s()

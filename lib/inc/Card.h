@@ -12,6 +12,7 @@ class Card
     public:
         Card();
         Card(UI i);
+        Card(Suit suit);
         Card(Suit s, Rank r);
         Card(const Card& other);
         virtual ~Card();
@@ -20,6 +21,7 @@ class Card
 		byte value() const;
         Suit suit() const;
         Rank rank() const;
+        UI points() const;
         const char suit_s();
         std::string rank_s();
 

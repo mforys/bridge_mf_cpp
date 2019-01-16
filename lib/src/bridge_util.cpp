@@ -4,10 +4,17 @@
 #include <cstdlib>
 #include <ctime>
 
-UI getRandomCard()
+UI getRandom()
 {
     srand(time(NULL));
     UI r = rand() % CARD_COUNT;
+    return r;
+}
+
+UI getRandom(UI low, UI up)
+{
+    srand(time(NULL));
+    UI r = rand() % (up - low + 1) + low;
     return r;
 }
 

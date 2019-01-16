@@ -77,8 +77,9 @@ enum GamePattern
     NO_TRUMP_GAME
 };
 
-UI getRandomCard();
+UI getRandom();
 UI getRandom(UI i);
+UI getRandom(UI low, UI up);
 std::string suit_s(Suit suit);
 std::string seat_s(Seat seat);
 

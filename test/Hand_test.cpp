@@ -29,19 +29,37 @@ HandCards createHand(UI clubs, UI diamonds, UI hearts, UI spades)
 {
     HandCards cards;
 
-    for (int i = 0; i < 13; ++i)
+    for (int i = 0; i < CARD_HAND_COUNT; ++i)
     {
         if (i < clubs)
-            cards[i] = Card(i + 7);
+            cards[i] = Card(CLUB);
         else if (i < clubs + diamonds)
-            cards[i] = Card(i + CARD_HAND_COUNT);
+            cards[i] = Card(DIAMOND);
         else if (i < clubs + diamonds + hearts)
-            cards[i] = Card(i + 2 * CARD_HAND_COUNT);
+            cards[i] = Card(HEART);
         else
-            cards[i] = Card(i + 3 * CARD_HAND_COUNT);
+            cards[i] = Card(SPADE);
     }
 
     return cards;
+}
+
+HandCards createHand(UI clubs, UI diamonds, UI hearts, UI spades, UI points)
+{
+    HandCards cards;
+    UI tempPoints;
+
+    while (true)
+    {
+        cards = createHand(clubs, diamonds, hearts, spades);
+        tempPoints = 0;
+        for (auto c : cards)
+        {
+            tempPoints += c.points();
+        }
+        if (points == tempPoints)
+            return cards;
+    }
 }
 
 TEST (HandTest, Basic) {
