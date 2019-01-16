@@ -128,3 +128,21 @@ TEST (HandTest, getLongestSuit) {
     longestSuit = h6.getLongestSuit();
     EXPECT_EQ(longestSuit, SPADE);
 }
+
+TEST (HandTest, insertCard) {
+    Hand h;
+    HandCards cards;
+
+    Card c = h.insertCard(CLUB);
+
+    EXPECT_EQ(c.suit(), CLUB);
+
+    cards[0] = c;
+
+    Hand h2(cards);
+
+    Card c2 = h2.insertCard(CLUB);
+
+    EXPECT_EQ(c2.suit(), CLUB);
+    EXPECT_NE(c2.rank(), c.rank());
+}

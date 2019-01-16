@@ -18,7 +18,7 @@ Card::Card()
 Card::Card(Suit suit)
 {
     //ctor
-    UI i = getRandom(suit * CARD_HAND_COUNT, suit * (CARD_HAND_COUNT + 1));
+    UI i = getRandom(suit * CARD_HAND_COUNT, (suit + 1) * CARD_HAND_COUNT);
 
     v = i;
     r = (Rank) (i % CARD_HAND_COUNT);

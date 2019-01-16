@@ -30,7 +30,7 @@ Bid BidProposer::proposeBid(Seat seat)
     if (previousRegularBid.isInvalid())
     {
         // opening
-        return openingBid();
+        return openingBid(currentHand);
     }
     else if (!lastPartnerBid.isInvalid() && lastPartnerBid.volume() != PASS)
     {
@@ -46,8 +46,12 @@ Bid BidProposer::proposeBid(Seat seat)
     return Bid(PASS);
 }
 
-Bid BidProposer::openingBid()
+Bid BidProposer::openingBid(Hand& hand)
 {
+    auto points = hand.getPoints();
+    auto handStyle = hand.getGamePattern();
+    auto longestSuit = hand.getLongestSuit();
+
     if (points < 11)
     {
         return Bid(PASS);
@@ -95,7 +99,7 @@ Bid BidProposer::entryBid()
 Bid BidProposer::firstResponse()
 {
     // first response
-    auto proposalBid = openingBid();
+    auto proposalBid = openingBid(currentHand);
     BidVolume newVolume = lastPartnerBid.volume();
     Suit newSuit = proposalBid.suit();
     auto isFit = currentHand.isFitInSuit(lastPartnerBid.suit());

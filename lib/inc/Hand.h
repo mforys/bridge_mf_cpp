@@ -13,6 +13,8 @@ class Hand
 
 public:
     Hand();
+    Hand(UI clubs, UI diamonds, UI hearts, UI spades);
+    Hand(UI clubs, UI diamonds, UI hearts, UI spades, UI points);
     Hand(UI cards[]);
     Hand(HandCards& cards);
     Hand(std::vector<Card>& cards);
@@ -30,9 +32,13 @@ public:
     GamePattern getGamePattern() const;
     char getSeat(byte s);
     std::string print();
+    Card insertCard(Suit suit);
 
     virtual Hand& operator=(const Hand& other);
     virtual bool operator==(const Hand& other) const;
+
+private:
+
 };
 
 #endif // HAND_H

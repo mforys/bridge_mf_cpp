@@ -16,13 +16,12 @@ class BidProposer
 public:
     BidProposer(BidManager& aBidManager, Deal& aDeal);
     Bid proposeBid();
-    Bid proposeBid(Seat hand);
+    Bid proposeBid(Seat seat);
+    Bid entryBid();
+    Bid openingBid(Hand& hand);
 
 private:
-
-    Bid openingBid();
     Bid responseBid();
-    Bid entryBid();
     Bid firstResponse();
     Bid nextResponse();
     bool isPremiumGamePossible();
@@ -37,7 +36,6 @@ private:
     Suit longestSuit;
     Bid previousRegularBid;
     Bid lastPartnerBid;
-    GamePattern handStyle;
 };
 
 #endif /* BidProposer_h */

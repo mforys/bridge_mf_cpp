@@ -9,6 +9,26 @@ Hand::Hand()
 {
 }
 
+Hand::Hand(UI clubs, UI diamonds, UI hearts, UI spades)
+{
+    for (int i = 0; i < CARD_HAND_COUNT; ++i)
+    {
+        if (i < clubs)
+            cards[i] = Card(CLUB);
+        else if (i < clubs + diamonds)
+            cards[i] = Card(DIAMOND);
+        else if (i < clubs + diamonds + hearts)
+            cards[i] = Card(HEART);
+        else
+            cards[i] = Card(SPADE);
+    }
+}
+
+Hand::Hand(UI clubs, UI diamonds, UI hearts, UI spades, UI points)
+{
+    //UI tempPoints;
+}
+
 Hand::Hand(const Hand& other)
 {
     cards = other.cards;
@@ -51,23 +71,7 @@ UI Hand::getPoints() const
 
     for (const auto & card : cards)
     {
-        switch (card.rank())
-        {
-            case ACE:
-                points += 4;
-                break;
-            case KING:
-                points += 3;
-                break;
-            case QUEEN:
-                points += 2;
-                break;
-            case JACK:
-                points += 1;
-                break;
-            default:
-                break;
-        }
+        points += card.points();
     }
 
     return points;
@@ -259,4 +263,27 @@ std::string Hand::print()
     }
 
     return output;
+}
+
+Card Hand::insertCard(Suit suit)
+{
+    bool isThisCardAlreadyInHand = false;
+    Card card;
+
+    do
+    {
+        card = Card(suit);
+        isThisCardAlreadyInHand = false;
+        for (auto c : cards)
+        {
+            if (c == card)
+            {
+                isThisCardAlreadyInHand = true;
+                break;
+            }
+        }
+    }
+    while (isThisCardAlreadyInHand);
+
+    return card;
 }
