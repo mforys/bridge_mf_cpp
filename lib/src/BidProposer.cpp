@@ -21,6 +21,12 @@ Bid BidProposer::proposeBid()
 
 Bid BidProposer::proposeBid(Seat seat)
 {
+    currentHand = deal.getHand(seat);
+    points = currentHand.getPoints();
+    longestSuit = currentHand.getLongestSuit();
+    previousRegularBid = bidManager.getPreviousRegularBid();
+    lastPartnerBid = bidManager.getLastPartnerBid();
+
     if (previousRegularBid.isInvalid())
     {
         // opening
