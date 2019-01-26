@@ -8,8 +8,7 @@ typedef std::array<Card, CARD_COUNT> DealCards;
 
 class Deal
 {
-    DealCards cards;
-    Hand hands[HAND_COUNT];
+
 
     public:
         Deal();
@@ -17,10 +16,11 @@ class Deal
         const DealCards& getCards();
         Hand& getHand(UI i);
 
-    protected:
     private:
-
         void swap(UI i, UI j);
+
+        DealCards cards;
+        Hand hands[HAND_COUNT];
 };
 
 #endif // DEAL_H

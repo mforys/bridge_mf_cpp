@@ -282,6 +282,8 @@ Card Hand::insertCard(Suit suit)
                 break;
             }
         }
+
+        
     }
     while (isThisCardAlreadyInHand);
 

@@ -14,8 +14,6 @@ void Deal::swap(UI i, UI j)
 
 Deal::Deal()
 {
-    //cout << "Konstruktor dla Deal" << endl;
-
     UI j;
 
     for (UI i = 0; i < CARD_COUNT; ++i)
