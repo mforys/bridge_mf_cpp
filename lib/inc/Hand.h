@@ -9,6 +9,7 @@ typedef std::array<Card, CARD_HAND_COUNT> HandCards;
 
 class Hand
 {
+protected:
     HandCards cards;
 
 public:

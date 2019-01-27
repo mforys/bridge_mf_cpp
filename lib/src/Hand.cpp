@@ -26,7 +26,7 @@ Hand::Hand(UI clubs, UI diamonds, UI hearts, UI spades)
 
 Hand::Hand(UI clubs, UI diamonds, UI hearts, UI spades, UI points)
 {
-    //UI tempPoints;
+
 }
 
 Hand::Hand(const Hand& other)
