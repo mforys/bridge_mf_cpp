@@ -1,4 +1,3 @@
-
 #include "HandSuits.h"
 
 HandSuits::HandSuits(UI clubs, UI diamonds, UI hearts, UI spades)
@@ -13,5 +12,15 @@ HandSuits::HandSuits(UI clubs, UI diamonds, UI hearts, UI spades)
             cards[i] = Card(HEART);
         else
             cards[i] = Card(SPADE);
+    }
+}
+
+HandSuits::HandSuits(Suit suit)
+{
+    UI firstCardID = suit * CARD_SUIT_COUNT;
+
+    for (int i = 0; i < firstCardID + CARD_HAND_COUNT; ++i)
+    {
+        cards[i] = Card(firstCardID + i);
     }
 }

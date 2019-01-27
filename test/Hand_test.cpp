@@ -124,7 +124,7 @@ TEST (HandTest, getLongestSuit) {
 
     cards = createHand(3, 2, 3, 5);
     Hand h6(cards);
-    //std::cout << h3.print();
+
     longestSuit = h6.getLongestSuit();
     EXPECT_EQ(longestSuit, SPADE);
 }

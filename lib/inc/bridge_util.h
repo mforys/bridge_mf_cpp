@@ -5,6 +5,7 @@
 
 #define CARD_COUNT      52
 #define CARD_HAND_COUNT 13
+#define CARD_SUIT_COUNT 13
 #define HAND_COUNT       4
 #define SUIT_COUNT       4
 
