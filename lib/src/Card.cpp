@@ -81,7 +81,7 @@ Rank Card::rank() const
 
 UI Card::points() const
 {
-    switch (v)
+    switch (r)
     {
         case ACE:   return 4;
         case KING:  return 3;
