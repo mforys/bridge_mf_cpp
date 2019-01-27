@@ -32,7 +32,7 @@ public:
     GamePattern getGamePattern() const;
     char getSeat(byte s);
     std::string print();
-    //Card insertCard(Suit suit);
+    Card insertCard(Suit suit);
 
     virtual Hand& operator=(const Hand& other);
     virtual bool operator==(const Hand& other) const;

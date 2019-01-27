@@ -1,10 +1,3 @@
-//
-//  BidManager.h
-//  bridge_mf
-//
-//  Created by forysm on 10/28/18.
-//
-
 #ifndef BidManager_h
 #define BidManager_h
 

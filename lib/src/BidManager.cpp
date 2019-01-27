@@ -1,10 +1,3 @@
-//
-//  BidManager.cpp
-//  bridge_mf
-//
-//  Created by forysm on 10/28/18.
-//
-
 #include "BidManager.h"
 
 #include <string>

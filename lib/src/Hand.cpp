@@ -64,7 +64,7 @@ Suit Hand::getLongestSuit() const
     Suit currentSuit = NO_TRUMP;
     UI currentSuitCardCount = 0;
 
-    for (auto s = 0; s < 4; ++s)
+    for (auto s = 0; s < SUIT_COUNT; ++s)
     {
         currentSuit = (Suit)s;
         currentSuitCardCount = getSuitCount(currentSuit);
@@ -88,7 +88,7 @@ Suit Hand::getSecondLongestSuit() const
     Suit currentSuit = NO_TRUMP;
     UI currentSuitCardCount = 0;
 
-    for (auto s = 0; s < 4; ++s)
+    for (auto s = 0; s < SUIT_COUNT; ++s)
     {
         currentSuit = (Suit)s;
 
@@ -245,25 +245,25 @@ std::string Hand::print()
     return output;
 }
 
-//Card Hand::insertCard(Suit suit)
-//{
-//    bool isThisCardAlreadyInHand = false;
-//    Card card;
-//
-//    do
-//    {
-//        card = Card(suit);
-//        isThisCardAlreadyInHand = false;
-//        for (auto c : cards)
-//        {
-//            if (c == card)
-//            {
-//                isThisCardAlreadyInHand = true;
-//                break;
-//            }
-//        }
-//    }
-//    while (isThisCardAlreadyInHand);
-//
-//    return card;
-//}
+Card Hand::insertCard(Suit suit)
+{
+    bool isThisCardAlreadyInHand = false;
+    Card card;
+
+    do
+    {
+        card = Card(suit);
+        isThisCardAlreadyInHand = false;
+        for (auto c : cards)
+        {
+            if (c == card)
+            {
+                isThisCardAlreadyInHand = true;
+                break;
+            }
+        }
+    }
+    while (isThisCardAlreadyInHand);
+
+    return card;
+}

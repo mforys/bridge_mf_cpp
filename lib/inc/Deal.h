@@ -8,8 +8,6 @@ typedef std::array<Card, CARD_COUNT> DealCards;
 
 class Deal
 {
-
-
     public:
         Deal();
         virtual ~Deal();

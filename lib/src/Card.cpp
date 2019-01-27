@@ -7,7 +7,6 @@
 
 Card::Card()
 {
-    //ctor
     UI i = getRandom();
 
     v = i;
@@ -17,7 +16,6 @@ Card::Card()
 
 Card::Card(Suit suit)
 {
-    //ctor
     UI i = getRandom(suit * CARD_HAND_COUNT, (suit + 1) * CARD_HAND_COUNT);
 
     v = i;
@@ -27,7 +25,6 @@ Card::Card(Suit suit)
 
 Card::Card(UI i)
 {
-    //ctor
     v = i;
     r = (Rank) (i % CARD_HAND_COUNT);
     s = (Suit) (i / CARD_HAND_COUNT);
@@ -43,14 +40,10 @@ Card::Card(Suit suit, Rank rank)
 
 Card::~Card()
 {
-    //dtor
 }
 
 Card::Card(const Card& other)
 {
-    //copy ctor
-    //cout <<" Konstruktor kopiujacy" <<endl;
-
     v = other.v;
     r = other.r;
     s = other.s;

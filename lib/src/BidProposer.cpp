@@ -1,10 +1,3 @@
-//
-//  BidProposer.cpp
-//  bridge_mf
-//
-//  Created by Marek Forys on 29/12/2018.
-//
-
 #include "BidProposer.h"
 #include "Hand.h"
 
