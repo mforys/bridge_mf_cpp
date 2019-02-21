@@ -9,6 +9,8 @@ Card::Card()
 {
     UI i = getRandom();
 
+    assert(i < CARD_COUNT);
+
     v = i;
     r = (Rank) (i % CARD_HAND_COUNT);
     s = (Suit) (i / CARD_HAND_COUNT);
@@ -17,6 +19,9 @@ Card::Card()
 Card::Card(Suit suit)
 {
     UI i = getRandom(suit * CARD_HAND_COUNT, (suit + 1) * CARD_HAND_COUNT);
+
+    assert(suit * CARD_HAND_COUNT <= i);
+    assert(i < (suit + 1) * CARD_HAND_COUNT);
 
     v = i;
     r = (Rank) (i % CARD_HAND_COUNT);
@@ -51,7 +56,6 @@ Card::Card(const Card& other)
 
 void Card::set(UI i)
 {
-    //ctor
     v = i;
     r = (Rank) (i % CARD_HAND_COUNT);
     s = (Suit) (i / CARD_HAND_COUNT);

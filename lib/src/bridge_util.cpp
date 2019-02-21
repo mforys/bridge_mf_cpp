@@ -4,23 +4,41 @@
 #include <cstdlib>
 #include <ctime>
 
+static bool firstTime = true;
+
 UI getRandom()
 {
-    srand(time(NULL));
+    if (firstTime)
+    {
+        srand(time(NULL));
+        firstTime = false;
+    }
+
     UI r = rand() % CARD_COUNT;
+
     return r;
 }
 
 UI getRandom(UI low, UI up)
 {
-    srand(time(NULL));
-    UI r = rand() % (up - low + 1) + low;
+    if (firstTime)
+    {
+        srand(time(NULL));
+        firstTime = false;
+    }
+
+    UI r = rand() % (up - low) + low;
     return r;
 }
 
 UI getRandom(UI i)
 {
-    srand(time(NULL));
+    if (firstTime)
+    {
+        srand(time(NULL));
+        firstTime = false;
+    }
+
     UI r = rand() % i;
     return r;
 }

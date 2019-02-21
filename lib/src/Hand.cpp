@@ -6,20 +6,23 @@
 #include <vector>
 
 Hand::Hand()
+: firstFreeSlot(0)
 {
 }
 
 Hand::Hand(const Hand& other)
+: firstFreeSlot(0)
 {
     cards = other.cards;
 }
 
 Hand::Hand(HandCards& aCards)
-: cards(aCards)
+: cards(aCards), firstFreeSlot(0)
 {
 }
 
 Hand::Hand(std::vector<Card>& aCards)
+: firstFreeSlot(0)
 {
     for (int i = 0; i < CARD_HAND_COUNT; ++i)
     {
@@ -245,25 +248,17 @@ std::string Hand::print()
     return output;
 }
 
-Card Hand::insertCard(Suit suit)
+bool Hand::insert(Card card)
 {
-    bool isThisCardAlreadyInHand = false;
-    Card card;
-
-    do
+    for (UI i = 0; i < firstFreeSlot; ++i)
     {
-        card = Card(suit);
-        isThisCardAlreadyInHand = false;
-        for (auto c : cards)
+        if (cards[i] == card)
         {
-            if (c == card)
-            {
-                isThisCardAlreadyInHand = true;
-                break;
-            }
+            return false;
         }
     }
-    while (isThisCardAlreadyInHand);
 
-    return card;
+    cards[firstFreeSlot] = card;
+    ++firstFreeSlot;
+    return true;
 }

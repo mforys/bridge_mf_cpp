@@ -1,23 +1,27 @@
 #include "gtest/gtest.h"
 #include "Card.h"
 
-TEST (CardTest, Basic) {
+TEST (CardTest, Basic)
+{
     Card card(CLUB, TWO);
 
     EXPECT_EQ (card.suit(), CLUB);
     EXPECT_EQ (card.rank(), TWO);
 }
 
-TEST (CardTest, Card_constructor_Suit) {
-    for (int i = 0; i < 100; ++i)
+TEST (CardTest, Card_constructor_Suit)
+{
+    Card card0, card1, card2, card3;
+
+    for (int i = 0; i < 10; ++i)
     {
-        Card card0(CLUB);
+        card0 = Card(CLUB);
         EXPECT_EQ (card0.suit(), CLUB);
-        Card card1(DIAMOND);
+        card1 = Card(DIAMOND);
         EXPECT_EQ (card1.suit(), DIAMOND);
-        Card card2(HEART);
+        card2 = Card(HEART);
         EXPECT_EQ (card2.suit(), HEART);
-        Card card3(SPADE);
+        card3 = Card(SPADE);
         EXPECT_EQ (card3.suit(), SPADE);
     }
 }
