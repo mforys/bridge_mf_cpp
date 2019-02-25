@@ -157,7 +157,7 @@ Seat BidManager::getCurrentSeat()
 {
     auto bidCounter = bids.size();
 
-    return (Seat) ((bidCounter + startSeat - 1) % 4);
+    return (Seat) ((bidCounter + startSeat) % 4);
 }
 
 Seat BidManager::getPartnerSeatOfCurrentSeat()

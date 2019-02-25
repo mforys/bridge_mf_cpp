@@ -6,7 +6,7 @@
 #include <array>
 #include <set>
 
-#define ARRAY_IMPL 1
+#define ARRAY_IMPL
 
 #ifdef ARRAY_IMPL
 typedef std::array<Card, CARD_HAND_COUNT> HandCards;
