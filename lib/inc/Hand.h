@@ -4,8 +4,15 @@
 #include "bridge_util.h"
 #include "Card.h"
 #include <array>
+#include <set>
 
+#define ARRAY_IMPL 1
+
+#ifdef ARRAY_IMPL
 typedef std::array<Card, CARD_HAND_COUNT> HandCards;
+#else
+typedef std::set<Card> HandCards;
+#endif
 
 class Hand
 {
@@ -14,7 +21,6 @@ protected:
 
 public:
     Hand();
-    //Hand(UI clubs, UI diamonds, UI hearts, UI spades, UI points);
     Hand(UI cards[]);
     Hand(HandCards& cards);
     Hand(std::vector<Card>& cards);
