@@ -89,30 +89,32 @@ TEST (BidManagerTest, getFirstBid_EAST)
 TEST (BidManagerTest, getPartnerSeatOfCurrentSeat)
 {
     BidManager manager(EAST);
-    manager.addBid(Bid(ONE_B, DIAMOND));
     EXPECT_EQ (WEST,     manager.getPartnerSeatOfCurrentSeat());
+    manager.addBid(Bid(ONE_B, DIAMOND));
+    EXPECT_EQ (NORTH,    manager.getPartnerSeatOfCurrentSeat());
     manager.addBid(PASS);
-    EXPECT_EQ (NORTH,     manager.getPartnerSeatOfCurrentSeat());
-    manager.addBid(Bid(ONE_B, SPADE));
     EXPECT_EQ (EAST,     manager.getPartnerSeatOfCurrentSeat());
+    manager.addBid(Bid(ONE_B, SPADE));
+    EXPECT_EQ (SOUTH,    manager.getPartnerSeatOfCurrentSeat());
     manager.addBid(Bid(ONE_B, NO_TRUMP));
-    EXPECT_EQ (SOUTH,     manager.getPartnerSeatOfCurrentSeat());
+    EXPECT_EQ (WEST,     manager.getPartnerSeatOfCurrentSeat());
 }
 
 TEST (BidManagerTest, getCurrentSeat)
 {
     BidManager manager(EAST);
+    EXPECT_EQ (EAST,    manager.getCurrentSeat());
     manager.addBid(Bid(ONE_B, DIAMOND));
-    EXPECT_EQ (EAST,    manager.getCurrentSeat());
+    EXPECT_EQ (SOUTH,   manager.getCurrentSeat());
     manager.addBid(PASS);
-    EXPECT_EQ (SOUTH,   manager.getCurrentSeat());
-    manager.addBid(Bid(ONE_B, SPADE));
     EXPECT_EQ (WEST,    manager.getCurrentSeat());
-    manager.addBid(Bid(ONE_B, NO_TRUMP));
+    manager.addBid(Bid(ONE_B, SPADE));
     EXPECT_EQ (NORTH,   manager.getCurrentSeat());
-    manager.addBid(Bid(PASS));
+    manager.addBid(Bid(ONE_B, NO_TRUMP));
     EXPECT_EQ (EAST,    manager.getCurrentSeat());
-    manager.addBid(Bid(TWO_B, SPADE));
+    manager.addBid(Bid(PASS));
     EXPECT_EQ (SOUTH,   manager.getCurrentSeat());
+    manager.addBid(Bid(TWO_B, SPADE));
+    EXPECT_EQ (WEST,    manager.getCurrentSeat());
 }
 
