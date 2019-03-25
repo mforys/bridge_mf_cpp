@@ -224,7 +224,6 @@ bool Hand::operator==(const Hand& other) const
             return false;
     }
 #else
-
     if (cards != other.cards)
         return false;
 #endif

@@ -11,7 +11,7 @@
 #ifdef ARRAY_IMPL
 typedef std::array<Card, CARD_HAND_COUNT> HandCards;
 #else
-typedef std::set<Card> HandCards;
+typedef std::set<Card, std::greater<Card>> HandCards;
 #endif
 
 class Hand
