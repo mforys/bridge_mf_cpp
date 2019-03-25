@@ -10,5 +10,5 @@ TEST (HandSuitsPoints_Test, Basic) {
     EXPECT_EQ(4, hand.getSuitCount(HEART));
     EXPECT_EQ(1, hand.getSuitCount(SPADE));
 
-    //EXPECT_EQ(12, hand.getPoints());
+    EXPECT_EQ(12, hand.getPoints());
 }

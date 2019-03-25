@@ -16,6 +16,9 @@ class HandSuitsPoints : public HandSuits
 {
 public:
     HandSuitsPoints(UI clubs, UI diamonds, UI hearts, UI spades, UI points);
+private:
+    void fixHandToPoints(UI points);
+    void swapRandomCardWithinSuit();
 };
 
 #endif /* HandSuitsPoints_h */

@@ -291,8 +291,9 @@ bool Hand::insert(Card card)
 
     if (cardsInHandCount < CARD_HAND_COUNT)
     {
-        cards.insert(card);
-    	return true;
+        auto ret = cards.insert(card);
+        if (ret.second == true)
+    		return true;
     }
 
     return false;
