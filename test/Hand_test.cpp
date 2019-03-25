@@ -8,7 +8,11 @@ TEST (HandTest, Basic)
 
     auto receivedCards = hand.getCards();
 
+#ifdef ARRAY_IMPL
     EXPECT_EQ(CARD_HAND_COUNT, receivedCards.size());
+#else
+    EXPECT_EQ(0, receivedCards.size());
+#endif
 }
 
 TEST (HandTest, getPoints) {

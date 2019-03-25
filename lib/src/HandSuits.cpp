@@ -6,6 +6,7 @@ HandSuits::HandSuits(UI clubs, UI diamonds, UI hearts, UI spades)
 
     assert(clubs + diamonds + hearts + spades == CARD_HAND_COUNT);
 
+#ifdef ARRAY_IMPL
     for (int i = 0; i < CARD_HAND_COUNT; ++i)
     {
         if (i < clubs)
@@ -22,18 +23,32 @@ HandSuits::HandSuits(UI clubs, UI diamonds, UI hearts, UI spades)
             --i;
         }
     }
+#else
+    while (cards.size() < CARD_HAND_COUNT)
+    {
+        while (getSuitCount(CLUB) < clubs)
+            insert(Card(CLUB));
+        while (getSuitCount(DIAMOND) < diamonds)
+            insert(Card(DIAMOND));
+        while (getSuitCount(HEART) < hearts)
+            insert(Card(HEART));
+        while (getSuitCount(SPADE) < spades)
+            insert(Card(SPADE));
+    }
+#endif
 }
 
 HandSuits::HandSuits(Suit suit)
 {
+#ifdef ARRAY_IMPL
     UI firstCardID = suit * CARD_SUIT_COUNT;
 
     for (int i = 0; i < firstCardID + CARD_HAND_COUNT; ++i)
     {
-#ifdef ARRAY_IMPL
         cards[i] = Card(firstCardID + i);
-#else
-        cards.insert(Card(firstCardID + i));
-#endif
     }
+#else
+    while (getSuitCount(suit) < CARD_SUIT_COUNT)
+        insert(Card(suit));
+#endif
 }
