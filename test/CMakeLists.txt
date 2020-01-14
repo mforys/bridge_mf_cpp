@@ -2,8 +2,8 @@ set (CMAKE_CXX_STANDARD 11)
 
 find_package(GTest REQUIRED)
 
-message("GTEST_INCLUDE_DIRS = " ${GTEST_INCLUDE_DIRS})
-message("GTEST_LIBRARIES = " ${GTEST_LIBRARIES})
+#message("GTEST_INCLUDE_DIRS = " ${GTEST_INCLUDE_DIRS})
+#message("GTEST_LIBRARIES = " ${GTEST_LIBRARIES})
 
 include_directories(${GTEST_INCLUDE_DIRS})
 #include(GoogleTest)
