@@ -171,8 +171,7 @@ bool BidProposer::isPremiumGamePossible()
         partnerPointsLimitUp = 6;
         partnerPointsLimitDown = 0;
     }
-    
-    //auto totalOurPointsLimitUp = partnerPointsLimitUp + points;
+
     auto totalOurPointsLimitDown = partnerPointsLimitDown + points;
     
     if (totalOurPointsLimitDown > 24)
