@@ -2,6 +2,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <cassert>
 
 #define ASCII_2_CODE 50
 
@@ -20,8 +21,8 @@ Card::Card(Suit suit)
 {
     UI i = getRandom(suit * CARD_HAND_COUNT, (suit + 1) * CARD_HAND_COUNT);
 
-    assert(suit * CARD_HAND_COUNT <= i);
-    assert(i < (suit + 1) * CARD_HAND_COUNT);
+    assert(i >= static_cast<unsigned char>(suit * CARD_HAND_COUNT));
+    assert(i < static_cast<unsigned char>((suit + 1) * CARD_HAND_COUNT));
 
     v = i;
     r = (Rank) (i % CARD_HAND_COUNT);

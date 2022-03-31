@@ -8,6 +8,7 @@
 #include "HandSuitsPoints.h"
 
 #include <iterator>
+#include <cassert>
 
 HandSuitsPoints::HandSuitsPoints(UI clubs, UI diamonds, UI hearts, UI spades, UI points)
 : HandSuits(clubs, diamonds, hearts, spades)

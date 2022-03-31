@@ -1,4 +1,5 @@
 #include "HandSuits.h"
+#include <cassert>
 
 HandSuits::HandSuits(UI clubs, UI diamonds, UI hearts, UI spades)
 {

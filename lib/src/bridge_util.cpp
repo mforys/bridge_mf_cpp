@@ -10,7 +10,7 @@ UI getRandom()
 {
     if (firstTime)
     {
-        srand(time(NULL));
+        srand(static_cast<unsigned int>(time(NULL)));
         firstTime = false;
     }
 
@@ -23,7 +23,7 @@ UI getRandom(UI low, UI up)
 {
     if (firstTime)
     {
-        srand(time(NULL));
+        srand(static_cast<unsigned int>(time(NULL)));
         firstTime = false;
     }
 
@@ -35,7 +35,7 @@ UI getRandom(UI i)
 {
     if (firstTime)
     {
-        srand(time(NULL));
+        srand(static_cast<unsigned int>(time(NULL)));
         firstTime = false;
     }
 

@@ -1,6 +1,8 @@
 #include "BidProposer.h"
 #include "Hand.h"
 
+#include <cassert>
+
 BidProposer::BidProposer(BidManager& aBidManager, Deal& aDeal)
 : bidManager(aBidManager), deal(aDeal)
 {
@@ -148,6 +150,7 @@ Bid BidProposer::nextResponse()
             return Bid(FOUR_B, bestSuit);
         default:
             assert(false);
+            return Bid(PASS);
     }
 }
 

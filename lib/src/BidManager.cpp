@@ -1,6 +1,7 @@
 #include "BidManager.h"
 
 #include <string>
+#include <cassert>
 
 BidManager::BidManager(Seat startSeat)
 : startSeat(startSeat)
@@ -172,6 +173,7 @@ Seat BidManager::getPartnerSeatOfCurrentSeat()
         case EAST:  return WEST;
         default:
             assert(false);
+            return NORTH;
     }
 }
 

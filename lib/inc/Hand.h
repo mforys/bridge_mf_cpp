@@ -5,6 +5,7 @@
 #include "Card.h"
 #include <array>
 #include <set>
+#include <vector>
 
 //#define ARRAY_IMPL
 

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <cassert>
 
 Hand::Hand()
 : firstFreeSlot(0)

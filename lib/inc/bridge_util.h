@@ -3,11 +3,11 @@
 
 #include <string>
 
-#define CARD_COUNT      52
-#define CARD_HAND_COUNT 13
-#define CARD_SUIT_COUNT 13
-#define HAND_COUNT       4
-#define SUIT_COUNT       4
+const unsigned char CARD_COUNT = 52;
+const unsigned char CARD_HAND_COUNT = 13;
+const unsigned char CARD_SUIT_COUNT = 13;
+const unsigned char HAND_COUNT = 4;
+const unsigned char SUIT_COUNT = 4;
 
 typedef unsigned int    UI;
 typedef unsigned char byte;
